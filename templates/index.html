@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🌱 AgroBot - Crop Symptom Assistant</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f9f4; text-align: center; padding: 30px; }
+        h1 { color: #2c7a2c; }
+        form { background: #fff; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        input, textarea { width: 300px; padding: 10px; margin: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; background: #2c7a2c; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #256a25; }
+        .result { margin-top: 20px; text-align: left; display: inline-block; background: #e8f5e9; padding: 15px; border-radius: 10px; width: 400px; }
+    </style>
+</head>
+<body>
+    <h1>🌱 AgroBot - Crop Symptom Assistant</h1>
+    <form method="POST">
+        <input type="text" name="crop" placeholder="Enter crop (e.g., Tomato)" required><br>
+        <textarea name="symptom" placeholder="Describe symptom (e.g., yellow leaves)" required></textarea><br>
+        <button type="submit">Diagnose</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>🔎 Diagnosis</h2>
+        <p><b>Possible Issue:</b> {{ result.possible_issue }}</p>
+        <p><b>✅ Prevention:</b> {{ result.prevention }}</p>
+        <p><b>💊 Treatment:</b> {{ result.treatment }}</p>
+    </div>
+    {% elif result == None and request.method == 'POST' %}
+    <div class="result">
+        <h2>❌ No Match Found</h2>
+        <p>Please consult a local expert.</p>
+    </div>
+    {% endif %}
+</body>
+</html>
