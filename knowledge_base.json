@@ -1,0 +1,142 @@
+[
+  {
+    "crop": "Tomato",
+    "symptom": "yellow leaves",
+    "possible_issue": "Nitrogen deficiency",
+    "prevention": "Ensure proper soil fertility, rotate crops with legumes.",
+    "treatment": "Apply urea or organic compost to restore nitrogen."
+  },
+  {
+    "crop": "Tomato",
+    "symptom": "leaf curling",
+    "possible_issue": "Whitefly infestation",
+    "prevention": "Keep field weed-free, use yellow sticky traps.",
+    "treatment": "Spray neem oil or recommended insecticide."
+  },
+  {
+    "crop": "Tomato",
+    "symptom": "wilted plants",
+    "possible_issue": "Fusarium wilt",
+    "prevention": "Use resistant varieties, avoid continuous tomato cropping.",
+    "treatment": "Remove infected plants, treat soil with fungicide."
+  },
+  {
+    "crop": "Tomato",
+    "symptom": "spots on leaves",
+    "possible_issue": "Early blight",
+    "prevention": "Avoid overhead irrigation, ensure proper spacing.",
+    "treatment": "Spray copper-based fungicide or Mancozeb."
+  },
+  {
+    "crop": "Rice",
+    "symptom": "brown spots on leaves",
+    "possible_issue": "Brown spot disease",
+    "prevention": "Maintain proper spacing, avoid excess nitrogen fertilizers.",
+    "treatment": "Apply recommended fungicide such as Mancozeb."
+  },
+  {
+    "crop": "Rice",
+    "symptom": "wilting",
+    "possible_issue": "Bacterial blight",
+    "prevention": "Use certified disease-free seeds, practice field sanitation.",
+    "treatment": "Spray copper-based bactericides."
+  },
+  {
+    "crop": "Rice",
+    "symptom": "yellowing leaves",
+    "possible_issue": "Potassium deficiency",
+    "prevention": "Ensure balanced fertilizer use.",
+    "treatment": "Apply muriate of potash (MOP)."
+  },
+  {
+    "crop": "Rice",
+    "symptom": "stunted growth",
+    "possible_issue": "Tungro virus",
+    "prevention": "Control green leafhoppers (vector), plant resistant varieties.",
+    "treatment": "No direct cure, remove infected plants."
+  },
+  {
+    "crop": "Wheat",
+    "symptom": "yellow rust on leaves",
+    "possible_issue": "Stripe rust",
+    "prevention": "Plant resistant varieties, avoid late sowing.",
+    "treatment": "Apply fungicides like Propiconazole."
+  },
+  {
+    "crop": "Wheat",
+    "symptom": "black powdery heads",
+    "possible_issue": "Loose smut",
+    "prevention": "Use disease-free seeds, treat seeds before sowing.",
+    "treatment": "Seed treatment with fungicides such as Carboxin."
+  },
+  {
+    "crop": "Wheat",
+    "symptom": "yellowing of lower leaves",
+    "possible_issue": "Nitrogen deficiency",
+    "prevention": "Use balanced fertilizer management.",
+    "treatment": "Apply urea fertilizer at recommended doses."
+  },
+  {
+    "crop": "Maize",
+    "symptom": "leaf blight",
+    "possible_issue": "Turcicum leaf blight",
+    "prevention": "Plant resistant hybrids, crop rotation.",
+    "treatment": "Apply fungicides like Mancozeb."
+  },
+  {
+    "crop": "Maize",
+    "symptom": "stem borer damage",
+    "possible_issue": "Stem borer infestation",
+    "prevention": "Use pheromone traps, timely sowing.",
+    "treatment": "Apply neem oil or recommended insecticides."
+  },
+  {
+    "crop": "Maize",
+    "symptom": "yellowing leaves",
+    "possible_issue": "Zinc deficiency",
+    "prevention": "Ensure micronutrient-rich soil.",
+    "treatment": "Apply zinc sulfate (ZnSO4)."
+  },
+  {
+    "crop": "Potato",
+    "symptom": "leaf curling",
+    "possible_issue": "Potato leaf roll virus",
+    "prevention": "Use certified seed tubers, control aphid vectors.",
+    "treatment": "Remove infected plants, use resistant varieties."
+  },
+  {
+    "crop": "Potato",
+    "symptom": "dark lesions on leaves",
+    "possible_issue": "Late blight",
+    "prevention": "Avoid waterlogging, plant resistant varieties.",
+    "treatment": "Spray fungicides like Metalaxyl + Mancozeb."
+  },
+  {
+    "crop": "Potato",
+    "symptom": "yellowing lower leaves",
+    "possible_issue": "Magnesium deficiency",
+    "prevention": "Maintain balanced fertilization.",
+    "treatment": "Apply magnesium sulfate (MgSO4)."
+  },
+  {
+    "crop": "Cotton",
+    "symptom": "boll rot",
+    "possible_issue": "Boll rot disease",
+    "prevention": "Avoid excess irrigation, practice crop rotation.",
+    "treatment": "Spray fungicides like Carbendazim."
+  },
+  {
+    "crop": "Cotton",
+    "symptom": "leaf reddening",
+    "possible_issue": "Phosphorus deficiency",
+    "prevention": "Apply balanced fertilizers including phosphorus.",
+    "treatment": "Apply single super phosphate (SSP)."
+  },
+  {
+    "crop": "Cotton",
+    "symptom": "squares falling",
+    "possible_issue": "Pink bollworm infestation",
+    "prevention": "Destroy crop residues, use pheromone traps.",
+    "treatment": "Spray neem seed kernel extract or insecticide."
+  }
+]
