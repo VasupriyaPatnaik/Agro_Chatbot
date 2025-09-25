@@ -2,528 +2,565 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌱 AgroBot - Crop Symptom Assistant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2c7a2c;
-            --secondary-color: #4caf50;
-            --light-color: #e8f5e9;
-            --dark-color: #1b5e20;
-            --bot-msg-color: #e8f5e9;
-            --user-msg-color: #f0f7ff;
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            --error-color: #f44336;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌱 AgroBot - Crop Symptom Assistant</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c7a2c;
+      --secondary-color: #4caf50;
+      --light-color: #e8f5e9;
+      --dark-color: #1b5e20;
+      --bot-msg-color: #e8f5e9;
+      --user-msg-color: #f0f7ff;
+      --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      --error-color: #f44336;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            background: linear-gradient(135deg, #f4f9f4 0%, #e3f2e3 100%);
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    body {
+      background: linear-gradient(135deg, #f4f9f4 0%, #e3f2e3 100%);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 900px;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            height: 85vh;
-        }
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: 85vh;
+    }
 
-        .header {
-            background: var(--primary-color);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .header {
+      background: var(--primary-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .header-content {
-            flex: 1;
-        }
+    .header-content {
+      flex: 1;
+    }
 
-        .header h1 {
-            font-size: 1.8rem;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+    .header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
 
-        .header p {
-            margin-top: 5px;
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
+    .header p {
+      margin-top: 5px;
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
 
-        .clear-chat {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: background 0.3s;
-        }
+    .clear-chat {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: background 0.3s;
+    }
 
-        .clear-chat:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
+    .clear-chat:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
 
-        .chat-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .language-select {
+      margin-right: 10px;
+      padding: 5px 8px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
 
-        .message {
-            max-width: 75%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            line-height: 1.5;
-            position: relative;
-            animation: fadeIn 0.3s ease;
-        }
+    .chat-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
+    .message {
+      max-width: 75%;
+      padding: 12px 16px;
+      border-radius: 18px;
+      line-height: 1.5;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
 
-        .bot-message {
-            align-self: flex-start;
-            background: var(--bot-msg-color);
-            border-bottom-left-radius: 4px;
-        }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .user-message {
-            align-self: flex-end;
-            background: var(--user-msg-color);
-            border-bottom-right-radius: 4px;
-        }
+    .bot-message {
+      align-self: flex-start;
+      background: var(--bot-msg-color);
+      border-bottom-left-radius: 4px;
+    }
 
-        .input-area {
-            padding: 20px;
-            background: white;
-            border-top: 1px solid #eaeaea;
-            display: flex;
-            gap: 10px;
-            position: relative;
-        }
+    .user-message {
+      align-self: flex-end;
+      background: var(--user-msg-color);
+      border-bottom-right-radius: 4px;
+    }
 
-        .input-field {
-            flex: 1;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
+    .input-area {
+      padding: 20px;
+      background: white;
+      border-top: 1px solid #eaeaea;
+      display: flex;
+      gap: 10px;
+      position: relative;
+    }
 
-        .input-field:focus {
-            border-color: var(--secondary-color);
-        }
+    .input-field {
+      flex: 1;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
 
-        .input-field.error {
-            border-color: var(--error-color);
-        }
+    .input-field:focus {
+      border-color: var(--secondary-color);
+    }
 
-        .error-message {
-            color: var(--error-color);
-            font-size: 0.8rem;
-            position: absolute;
-            top: 5px;
-            left: 30px;
-        }
+    .input-field.error {
+      border-color: var(--error-color);
+    }
 
-        .send-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
+    .error-message {
+      color: var(--error-color);
+      font-size: 0.8rem;
+      position: absolute;
+      top: 5px;
+      left: 30px;
+    }
 
-        .send-button:hover {
-            background: var(--dark-color);
-        }
+    .send-button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
 
-        .send-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
+    .send-button:hover {
+      background: var(--dark-color);
+    }
 
-        .diagnosis-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 10px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary-color);
-        }
+    .send-button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
 
-        .diagnosis-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .diagnosis-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 10px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary-color);
+    }
 
-        .diagnosis-card p {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
+    .diagnosis-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .info-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-right: 8px;
-        }
+    .diagnosis-card p {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
 
-        .severity-high {
-            background-color: #ffebee;
-            color: #d32f2f;
-        }
+    .info-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-right: 8px;
+    }
 
-        .severity-medium {
-            background-color: #fff8e1;
-            color: #ff8f00;
-        }
+    .severity-high {
+      background-color: #ffebee;
+      color: #d32f2f;
+    }
 
-        .severity-low {
-            background-color: #e8f5e9;
-            color: #388e3c;
-        }
+    .severity-medium {
+      background-color: #fff8e1;
+      color: #ff8f00;
+    }
 
-        .typing-indicator {
-            display: inline-flex;
-            align-items: center;
-            background: var(--bot-msg-color);
-            padding: 12px 16px;
-            border-radius: 18px;
-            border-bottom-left-radius: 4px;
-        }
+    .severity-low {
+      background-color: #e8f5e9;
+      color: #388e3c;
+    }
 
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
-            margin: 0 3px;
-            animation: typingAnimation 1.4s infinite;
-        }
+    .typing-indicator {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bot-msg-color);
+      padding: 12px 16px;
+      border-radius: 18px;
+      border-bottom-left-radius: 4px;
+    }
 
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      margin: 0 3px;
+      animation: typingAnimation 1.4s infinite;
+    }
 
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-        @keyframes typingAnimation {
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
 
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-            }
+    @keyframes typingAnimation {
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+      }
 
-            30% {
-                transform: translateY(-5px);
-            }
-        }
+      30% {
+        transform: translateY(-5px);
+      }
+    }
 
-        .suggestion-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
+    .suggestion-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
 
-        .suggestion-chip {
-            background: white;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 8px 15px;
-            border-radius: 18px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+    .suggestion-chip {
+      background: white;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 8px 15px;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-        .suggestion-chip:hover {
-            background: var(--primary-color);
-            color: white;
-        }
+    .suggestion-chip:hover {
+      background: var(--primary-color);
+      color: white;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                height: 92vh;
-                border-radius: 15px;
-            }
+    @media (max-width: 768px) {
+      .container {
+        height: 92vh;
+        border-radius: 15px;
+      }
 
-            .message {
-                max-width: 85%;
-            }
+      .message {
+        max-width: 85%;
+      }
 
-            .header h1 {
-                font-size: 1.5rem;
-            }
+      .header h1 {
+        font-size: 1.5rem;
+      }
 
-            .input-area {
-                flex-direction: column;
-            }
+      .input-area {
+        flex-direction: column;
+      }
 
-            .send-button {
-                align-self: flex-end;
-            }
-        }
-    </style>
+      .send-button {
+        align-self: flex-end;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="header-content">
-                <h1><i class="fas fa-robot"></i> AgroBot Assistant</h1>
-                <p>Your AI-powered crop health diagnosis expert</p>
-            </div>
-            <button class="clear-chat" onclick="clearChat()">
-                <i class="fas fa-broom"></i> Clear Chat
-            </button>
-        </div>
-
-        <div class="chat-container" id="chatContainer">
-            <div class="message bot-message">
-                <p>Hello! I'm AgroBot, your crop health assistant. I can help diagnose plant issues based on symptoms
-                    you describe.</p>
-                <p>Please tell me:</p>
-                <p>1. What type of crop are you concerned about?</p>
-                <p>2. What symptoms have you noticed?</p>
-
-                <div class="suggestion-chips">
-                    <div class="suggestion-chip"
-                        onclick="fillSuggestion('Tomato', 'yellow leaves starting from bottom with brown edges')">
-                        Tomato: Yellow leaves</div>
-                    <div class="suggestion-chip"
-                        onclick="fillSuggestion('Rice', 'small oval brown spots with gray centers on leaves')">Rice:
-                        Brown spots</div>
-                    <div class="suggestion-chip"
-                        onclick="fillSuggestion('Maize', 'yellow-white stripes between veins starting from base')">
-                        Maize: Yellow stripes</div>
-                </div>
-            </div>
-        </div>
-
-        <form method="POST" class="input-area" id="diagnosisForm">
-            <input type="text" name="crop" class="input-field" placeholder="Enter crop (e.g., Tomato)" required
-                id="cropInput">
-            <input type="text" name="symptom" class="input-field" placeholder="Describe symptoms (e.g., yellow leaves)"
-                required id="symptomInput">
-            <button type="submit" class="send-button" id="submitButton">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </form>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <h1><i class="fas fa-robot"></i> AgroBot Assistant</h1>
+        <p id="headerSubtitle">Your AI-powered crop health diagnosis expert</p>
+      </div>
+      <div>
+        <select class="language-select" id="languageSelect" onchange="changeLanguage()">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="te">తెలుగు</option>
+        </select>
+        <button class="clear-chat" onclick="clearChat()">
+          <i class="fas fa-broom"></i> <span id="clearText">Clear Chat</span>
+        </button>
+      </div>
     </div>
 
-    <script>
-        // Utility functions
-        function addMessage(text, isUser = false) {
-            const chatContainer = document.getElementById('chatContainer');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = isUser ? 'message user-message' : 'message bot-message';
-            messageDiv.innerHTML = text;
-            chatContainer.appendChild(messageDiv);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+    <div class="chat-container" id="chatContainer"></div>
+
+    <form method="POST" class="input-area" id="diagnosisForm">
+      <input type="text" name="crop" class="input-field" placeholder="Enter crop (e.g., Tomato)" required id="cropInput">
+      <input type="text" name="symptom" class="input-field" placeholder="Describe symptoms (e.g., yellow leaves)" required id="symptomInput">
+      <button type="submit" class="send-button" id="submitButton">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    let userLanguage = 'en';
+
+    const translations = {
+      en: {
+        greeting: "Hello! I'm AgroBot, your crop health assistant. I can help diagnose plant issues based on symptoms you describe.",
+        placeholders: { crop: "Enter crop (e.g., Tomato)", symptom: "Describe symptoms (e.g., yellow leaves)" },
+        buttons: { clear: "Clear Chat" },
+        headerSubtitle: "Your AI-powered crop health diagnosis expert",
+        suggestions: { tomato: "Tomato: Yellow leaves", rice: "Rice: Brown spots", maize: "Maize: Yellow stripes" },
+        followUp: "Is there anything else you'd like to know about your crops?",
+        emptyFields: "Please fill both fields",
+        labels: {
+          possible_issue: "Possible Issue",
+          season: "Season/Risk Period",
+          prevention: "Prevention",
+          treatment: "Treatment",
+          organic_treatment: "Organic Treatment",
+          severity: "Severity"
         }
-        function showTypingIndicator() {
-            const chatContainer = document.getElementById('chatContainer');
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'message bot-message';
-            typingDiv.id = 'typingIndicator';
-            typingDiv.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
-            chatContainer.appendChild(typingDiv);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+      },
+      hi: {
+        greeting: "नमस्ते! मैं AgroBot हूँ, आपका फसल स्वास्थ्य सहायक। मैं लक्षणों के आधार पर पौधों की समस्याओं का निदान करने में मदद कर सकता हूँ।",
+        placeholders: { crop: "फसल दर्ज करें (जैसे, टमाटर)", symptom: "लक्षणों का विवरण दें (जैसे, पीले पत्ते)" },
+        buttons: { clear: "चैट साफ़ करें" },
+        headerSubtitle: "आपके AI-पावर्ड फसल स्वास्थ्य निदान विशेषज्ञ",
+        suggestions: { tomato: "टमाटर: पीले पत्ते", rice: "चावल: भूरे धब्बे", maize: "मकई: पीली धारियाँ" },
+        followUp: "क्या आप अपनी फसलों के बारे में कुछ और जानना चाहते हैं?",
+        emptyFields: "कृपया दोनों फ़ील्ड भरें",
+        labels: {
+          possible_issue: "संभावित समस्या",
+          season: "मौसम/जोखिम अवधि",
+          prevention: "रोकथाम",
+          treatment: "उपचार",
+          organic_treatment: "जैविक उपचार",
+          severity: "तीव्रता"
         }
-        function hideTypingIndicator() {
-            const typingIndicator = document.getElementById('typingIndicator');
-            if (typingIndicator) {
-                typingIndicator.remove();
-            }
+      },
+      te: {
+        greeting: "నమస్కారం! నేను AgroBot, మీ పంట ఆరోగ్య సహాయకుడు. మీరు వివరించే లక్షణాల ఆధారంగా మొక్కల సమస్యలను గుర్తించడానికి నేను సహాయం చేయగలను.",
+        placeholders: { crop: "పంటను నమోదు చేయండి (ఉదా., టమోటా)", symptom: "లక్షణాలను వివరించండి (ఉదా., పసుపు ఆకు)" },
+        buttons: { clear: "చాట్ క్లియర్ చేయండి" },
+        headerSubtitle: "మీ AI-శక్తిగల పంట ఆరోగ్య నిర్ధారణ నిపుణుడు",
+        suggestions: { tomato: "టమోటా: పసుపు ఆకులు", rice: "అన్నం: గోధుమ మచ్చలు", maize: "మక్కజొన్న: పసుపు రేఖలు" },
+        followUp: "మీ పంటల గురించి మరేదైనా తెలుసుకోవాలనుకుంటున్నారా?",
+        emptyFields: "దయచేసి రెండు ఫీల్డ్‌లు కూడా నింపండి",
+        labels: {
+          possible_issue: "సంభావ్య సమస్య",
+          season: "ఋతువు/జోखिम కాలం",
+          prevention: "నివారణ",
+          treatment: "చికిత్స",
+          organic_treatment: "సేంద్రీయ చికిత్స",
+          severity: "తీవ్రత"
         }
-        function showError(message) {
-            hideError();
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'error-message';
-            errorDiv.id = 'errorMessage';
-            errorDiv.textContent = message;
-            document.querySelector('.input-area').appendChild(errorDiv);
-            document.getElementById('cropInput').classList.add('error');
-            document.getElementById('symptomInput').classList.add('error');
-        }
-        function hideError() {
-            const errorMessage = document.getElementById('errorMessage');
-            if (errorMessage) {
-                errorMessage.remove();
-            }
-            document.getElementById('cropInput').classList.remove('error');
-            document.getElementById('symptomInput').classList.remove('error');
-        }
-        function clearChat() {
-            const chatContainer = document.getElementById('chatContainer');
-            chatContainer.innerHTML = '';
-            addMessage('<p>Hello! I\'m AgroBot, your crop health assistant. I can help diagnose plant issues based on symptoms you describe.</p><p>Please tell me:</p><p>1. What type of crop are you concerned about?</p><p>2. What symptoms have you noticed?</p><div class="suggestion-chips"><div class="suggestion-chip" onclick="fillSuggestion(\'Tomato\', \'yellow leaves starting from bottom with brown edges\')">Tomato: Yellow leaves</div><div class="suggestion-chip" onclick="fillSuggestion(\'Rice\', \'small oval brown spots with gray centers on leaves\')">Rice: Brown spots</div><div class="suggestion-chip" onclick="fillSuggestion(\'Maize\', \'yellow-white stripes between veins starting from base\')">Maize: Yellow stripes</div></div>', false);
-        }
-        function fillSuggestion(crop, symptom) {
-            document.getElementById('cropInput').value = crop;
-            document.getElementById('symptomInput').value = symptom;
-        }
+      }
+    };
 
-        // Handle form submission with AJAX
-        const form = document.getElementById('diagnosisForm');
-        const submitButton = document.getElementById('submitButton');
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
+    function addMessage(text, isUser = false) {
+      const chatContainer = document.getElementById('chatContainer');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = isUser ? 'message user-message' : 'message bot-message';
+      messageDiv.innerHTML = text;
+      chatContainer.appendChild(messageDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
 
-            const crop = document.querySelector('input[name="crop"]').value.trim();
-            const symptom = document.querySelector('input[name="symptom"]').value.trim();
+    function showTypingIndicator() {
+      const chatContainer = document.getElementById('chatContainer');
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'message bot-message';
+      typingDiv.id = 'typingIndicator';
+      typingDiv.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+      chatContainer.appendChild(typingDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
 
-            if (!crop || !symptom) {
-                showError('Please fill in both crop and symptom fields');
-                return;
-            }
+    function hideTypingIndicator() {
+      const typingIndicator = document.getElementById('typingIndicator');
+      if (typingIndicator) typingIndicator.remove();
+    }
 
-            hideError();
-            submitButton.disabled = true;
+    function fillSuggestion(crop, symptom) {
+      document.getElementById('cropInput').value = crop;
+      document.getElementById('symptomInput').value = symptom;
+    }
 
-            // Add user message to chat
-            addMessage('<strong>Crop:</strong> ' + crop + '<br><strong>Symptom:</strong> ' + symptom, true);
+    function updateUITexts(lang) {
+      const t = translations[lang];
+      document.getElementById('cropInput').placeholder = t.placeholders.crop;
+      document.getElementById('symptomInput').placeholder = t.placeholders.symptom;
+      document.getElementById('clearText').textContent = t.buttons.clear;
+      document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
 
-            // Show typing indicator
-            showTypingIndicator();
+      const suggestionChipsHTML = `<div class="suggestion-chips">
+        <div class="suggestion-chip" onclick="fillSuggestion('${t.suggestions.tomato.split(':')[0]}','${t.suggestions.tomato.split(':')[1].trim()}')">${t.suggestions.tomato}</div>
+        <div class="suggestion-chip" onclick="fillSuggestion('${t.suggestions.rice.split(':')[0]}','${t.suggestions.rice.split(':')[1].trim()}')">${t.suggestions.rice}</div>
+        <div class="suggestion-chip" onclick="fillSuggestion('${t.suggestions.maize.split(':')[0]}','${t.suggestions.maize.split(':')[1].trim()}')">${t.suggestions.maize}</div>
+      </div>`;
+      return suggestionChipsHTML;
+    }
 
-            try {
-                // Send AJAX request
-                const response = await fetch('/diagnose', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: JSON.stringify({ crop, symptom })
-                });
+    function showInitialBotMessage() {
+      const t = translations[userLanguage];
+      const suggestionHTML = updateUITexts(userLanguage);
+      addMessage(`<p>${t.greeting}</p>${suggestionHTML}`);
+    }
 
-                const data = await response.json();
+    function clearChat() {
+      document.getElementById('chatContainer').innerHTML = '';
+      showInitialBotMessage();
+    }
 
-                hideTypingIndicator();
+    function changeLanguage() {
+      userLanguage = document.getElementById('languageSelect').value;
+      clearChat();
+    }
 
-                if (data.status === 'success') {
-                    displayDiagnosisResult(data.result);
-                } else {
-                    addMessage(data.message || "No diagnosis found. Please consult a local expert.");
-                }
-            } catch (error) {
-                hideTypingIndicator();
-                addMessage("Sorry, there was an error processing your request. Please try again.");
-                console.error('Error:', error);
-            } finally {
-                submitButton.disabled = false;
-            }
+    showInitialBotMessage();
+
+    const form = document.getElementById('diagnosisForm');
+    const submitButton = document.getElementById('submitButton');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      let crop = document.getElementById('cropInput').value.trim();
+      let symptom = document.getElementById('symptomInput').value.trim();
+
+      if (!crop || !symptom) {
+        addMessage(translations[userLanguage].emptyFields, false);
+        return;
+      }
+
+      addMessage(`<strong>Crop:</strong> ${crop}<br><strong>Symptom:</strong> ${symptom}`, true);
+      showTypingIndicator();
+      submitButton.disabled = true;
+
+      try {
+        const response = await fetch('/diagnose', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ crop, symptom, lang: userLanguage })
         });
 
-        function displayDiagnosisResult(result) {
-            // Determine severity class
-            let severityClass = 'severity-medium';
-            let severityText = '';
+        hideTypingIndicator();
 
-            if (result.severity) {
-                const severity = result.severity.toLowerCase();
-                if (severity.includes('high')) {
-                    severityClass = 'severity-high';
-                } else if (severity.includes('medium')) {
-                    severityClass = 'severity-medium';
-                } else if (severity.includes('low')) {
-                    severityClass = 'severity-low';
-                }
-                severityText = '<span class="info-badge ' + severityClass + '">Severity: ' + result.severity + '</span>';
-            }
+        if (response.ok) {
+          const data = await response.json();
 
-            // Build diagnosis card
-            let diagnosisCard = '<div class="diagnosis-card">' +
-                '<h3><i class="fas fa-diagnoses"></i> Diagnosis ' + severityText + '</h3>' +
-                '<p><strong>Possible Issue:</strong> ' + result.possible_issue + '</p>';
+          const fields = {
+            possible_issue: data.possible_issue || 'N/A',
+            season: data.season || 'N/A',
+            prevention: data.prevention || 'N/A',
+            treatment: data.treatment || 'N/A',
+            organic_treatment: data.organic_treatment || 'N/A',
+            severity: data.severity || 'Medium'
+          };
 
-            if (result.season) {
-                diagnosisCard += '<p><strong>🌤️ Season/Risk Period:</strong> ' + result.season + '</p>';
-            }
+          const translatedFields = fields; // If backend returns localized text, else call translateAllFields(fields, userLanguage)
 
-            diagnosisCard += '<p><strong>✅ Prevention:</strong> ' + result.prevention + '</p>' +
-                '<p><strong>💊 Treatment:</strong> ' + result.treatment + '</p>';
+          let severityClass = 'severity-medium';
+          if (translatedFields.severity.toLowerCase().includes('high')) severityClass = 'severity-high';
+          else if (translatedFields.severity.toLowerCase().includes('low')) severityClass = 'severity-low';
 
-            if (result.organic_treatment) {
-                diagnosisCard += '<p><strong>🌿 Organic Treatment:</strong> ' + result.organic_treatment + '</p>';
-            }
+          const labels = translations[userLanguage].labels;
 
-            diagnosisCard += '</div>';
+          const diagnosisCard = `<div class="diagnosis-card">
+            <h3><i class="fas fa-diagnoses"></i> ${labels.severity}: <span class="info-badge ${severityClass}">${translatedFields.severity}</span></h3>
+            <p><strong>${labels.possible_issue}:</strong> ${translatedFields.possible_issue}</p>
+            <p><strong>🌤️ ${labels.season}:</strong> ${translatedFields.season}</p>
+            <p><strong>✅ ${labels.prevention}:</strong> ${translatedFields.prevention}</p>
+            <p><strong>💊 ${labels.treatment}:</strong> ${translatedFields.treatment}</p>
+            <p><strong>🌿 ${labels.organic_treatment}:</strong> ${translatedFields.organic_treatment}</p>
+          </div>`;
 
-            addMessage(diagnosisCard);
+          addMessage(diagnosisCard);
 
-            // Add follow-up message
+          setTimeout(() => {
+            showTypingIndicator();
             setTimeout(() => {
-                showTypingIndicator();
-                setTimeout(() => {
-                    hideTypingIndicator();
-                    addMessage("Is there anything else you'd like to know about your crops?");
-                }, 1500);
+              hideTypingIndicator();
+              addMessage(translations[userLanguage].followUp);
             }, 1000);
+          }, 500);
+        } else {
+          const errData = await response.json();
+          addMessage(errData.message || 'No diagnosis found.', false);
         }
-    </script>
+
+      } catch (error) {
+        hideTypingIndicator();
+        addMessage("Error processing your request.", false);
+        console.error(error);
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
 </body>
 
 </html>
