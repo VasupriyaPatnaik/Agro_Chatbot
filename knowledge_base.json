@@ -1,202 +1,212 @@
 [
-    {
-        "crop": "Tomato",
-        "symptom": "upward leaf curling with possible white insects underneath",
-        "possible_issue": "Whitefly infestation",
-        "severity": "High (can transmit viruses)",
-        "season": "Dry and warm weather",
-        "prevention": "Keep field weed-free, use yellow sticky traps, use reflective mulch",
-        "treatment": "Spray imidacloprid (0.3ml/liter) or thiamethoxam",
-        "organic_treatment": "Spray neem oil (5ml/liter) with soap, release beneficial insects like ladybugs"
-    },
-    {
-        "crop": "Tomato",
-        "symptom": "wilted plants despite adequate water, yellowing leaves, brown vascular tissue",
-        "possible_issue": "Fusarium wilt",
-        "severity": "High",
-        "season": "Warm soil temperatures (28-32°C)",
-        "prevention": "Use resistant varieties (VFN), avoid continuous tomato cropping, solarize soil",
-        "treatment": "Remove infected plants, treat soil with carbendazim (1g/liter)",
-        "organic_treatment": "Apply Trichoderma viride, practice 4-year crop rotation"
-    },
-    {
-        "crop": "Tomato",
-        "symptom": "concentric dark spots with yellow halos on lower leaves",
-        "possible_issue": "Early blight",
-        "severity": "Medium",
-        "season": "Wet and humid conditions",
-        "prevention": "Avoid overhead irrigation, ensure proper spacing (60-90cm), stake plants",
-        "treatment": "Spray copper-based fungicide (2g/liter) or Mancozeb (2g/liter) every 7-10 days",
-        "organic_treatment": "Spray baking soda solution (1 tbsp/gallon), improve air circulation"
-    },
-    {
-        "crop": "Rice",
-        "symptom": "small oval brown spots with gray centers on leaves",
-        "possible_issue": "Brown spot disease",
-        "severity": "Medium to High",
-        "season": "High humidity and temperature",
-        "prevention": "Maintain proper spacing, avoid excess nitrogen fertilizers, use resistant varieties",
-        "treatment": "Apply edifenphos (1ml/liter) or Mancozeb (2g/liter) at tillering and pre-flowering",
-        "organic_treatment": "Apply neem cake, use Pseudomonas fluorescens seed treatment"
-    },
-    {
-        "crop": "Rice",
-        "symptom": "wilting with yellow-white lesions along leaf edges",
-        "possible_issue": "Bacterial blight",
-        "severity": "High",
-        "season": "Rainy season with strong winds",
-        "prevention": "Use certified disease-free seeds, practice field sanitation, avoid wounding plants",
-        "treatment": "Spray copper-based bactericides (2g/liter) at first symptom appearance",
-        "organic_treatment": "Apply garlic-chili extract, use resistant varieties"
-    },
-    {
-        "crop": "Rice",
-        "symptom": "yellowing from leaf tips and margins with orange-brown spots",
-        "possible_issue": "Potassium deficiency",
-        "severity": "Medium",
-        "season": "All seasons, worse in sandy soils",
-        "prevention": "Ensure balanced fertilizer use, incorporate rice straw",
-        "treatment": "Apply muriate of potash (MOP) @ 60-80kg/ha during tillering",
-        "organic_treatment": "Apply wood ash (2-3 tons/ha), compost with banana residues"
-    },
-    {
-        "crop": "Rice",
-        "symptom": "stunted growth with yellow-orange leaves and reduced tillering",
-        "possible_issue": "Tungro virus",
-        "severity": "Very High",
-        "season": "Throughout growing season",
-        "prevention": "Control green leafhoppers with nets, plant resistant varieties, synchronous planting",
-        "treatment": "No direct cure, remove infected plants, spray insecticides for vectors",
-        "organic_treatment": "Apply neem oil for leafhopper control, use barrier crops"
-    },
-    {
-        "crop": "Wheat",
-        "symptom": "yellow-orange pustules in stripes on leaves",
-        "possible_issue": "Stripe rust",
-        "severity": "High",
-        "season": "Cool temperatures (10-15°C) with dew",
-        "prevention": "Plant resistant varieties, avoid late sowing, remove volunteer plants",
-        "treatment": "Apply propiconazole (1ml/liter) at first sign, repeat after 15 days",
-        "organic_treatment": "Spray horsetail tea, use sulfur dusting"
-    },
-    {
-        "crop": "Wheat",
-        "symptom": "black powdery masses replacing grains",
-        "possible_issue": "Loose smut",
-        "severity": "Medium",
-        "season": "Flowering period with high humidity",
-        "prevention": "Use disease-free seeds, treat seeds before sowing, solar treatment of seeds",
-        "treatment": "Seed treatment with carboxin (2g/kg seed) or tebuconazole",
-        "organic_treatment": "Hot water treatment (52°C for 11 minutes), use certified organic seeds"
-    },
-    {
-        "crop": "Wheat",
-        "symptom": "yellowing of lower leaves with stunted growth",
-        "possible_issue": "Nitrogen deficiency",
-        "severity": "Medium",
-        "season": "All seasons, worse in waterlogged soils",
-        "prevention": "Use balanced fertilizer management, soil testing, legume intercropping",
-        "treatment": "Apply urea fertilizer @ 100-150kg/ha in split doses",
-        "organic_treatment": "Apply composted manure, green manure with sunn hemp"
-    },
-    {
-        "crop": "Maize",
-        "symptom": "elongated grayish lesions with yellow margins on leaves",
-        "possible_issue": "Turcicum leaf blight",
-        "severity": "High",
-        "season": "Cool temperatures with high humidity",
-        "prevention": "Plant resistant hybrids, crop rotation with non-cereals, destroy crop residues",
-        "treatment": "Apply mancozeb (2.5g/liter) or azoxystrobin at disease appearance",
-        "organic_treatment": "Spray fermented buttermilk, use Trichoderma application"
-    },
-    {
-        "crop": "Maize",
-        "symptom": "dead hearts in young plants, bore holes in stems with frass",
-        "possible_issue": "Stem borer infestation",
-        "severity": "High",
-        "season": "Throughout crop growth, peak in summer",
-        "prevention": "Use pheromone traps (@5/ha), timely sowing, light traps",
-        "treatment": "Apply chlorpyriphos (2.5ml/liter) in whorls or carbofuran granules @ 8kg/ha",
-        "organic_treatment": "Release Trichogramma wasps (@50,000/ha), apply neem seed kernel extract (5%)"
-    },
-    {
-        "crop": "Maize",
-        "symptom": "yellow-white stripes between veins starting from base",
-        "possible_issue": "Zinc deficiency",
-        "severity": "Medium",
-        "season": "Cool and wet conditions, high pH soils",
-        "prevention": "Ensure micronutrient-rich soil, soil testing, organic matter addition",
-        "treatment": "Apply zinc sulfate (ZnSO4 @ 25kg/ha) as basal dose",
-        "organic_treatment": "Apply zinc-enriched compost, use zinc-solubilizing bacteria"
-    },
-    {
-        "crop": "Potato",
-        "symptom": "upward curling of leaves with rigid texture and purple tints",
-        "possible_issue": "Potato leaf roll virus",
-        "severity": "High",
-        "season": "Warm conditions favoring aphids",
-        "prevention": "Use certified seed tubers, control aphid vectors, rogue infected plants",
-        "treatment": "Remove infected plants, spray imidacloprid (0.3ml/liter) for aphids",
-        "organic_treatment": "Apply kaolin clay, use reflective mulches, beneficial insects"
-    },
-    {
-        "crop": "Potato",
-        "symptom": "water-soaked dark lesions on leaves with white mold in humid conditions",
-        "possible_issue": "Late blight",
-        "severity": "Very High",
-        "season": "Cool, wet weather (15-25°C)",
-        "prevention": "Avoid waterlogging, plant resistant varieties, ensure good drainage",
-        "treatment": "Spray metalaxyl + mancozeb (2g/liter) preventively, repeat every 7-10 days",
-        "organic_treatment": "Spray copper sulfate (0.5%), use resistant varieties, early harvesting"
-    },
-    {
-        "crop": "Potato",
-        "symptom": "yellowing between veins of lower leaves with possible red-purple tints",
-        "possible_issue": "Magnesium deficiency",
-        "severity": "Low to Medium",
-        "season": "All seasons, acidic soils",
-        "prevention": "Maintain balanced fertilization, soil testing, proper pH management",
-        "treatment": "Apply magnesium sulfate (MgSO4 @ 10-15kg/ha) as foliar spray",
-        "organic_treatment": "Apply dolomitic lime, compost with magnesium-rich materials"
-    },
-    {
-        "crop": "Cotton",
-        "symptom": "water-soaked bolls turning black with pinkish mold in humid weather",
-        "possible_issue": "Boll rot disease",
-        "severity": "High",
-        "season": "High humidity during boll formation",
-        "prevention": "Avoid excess irrigation, practice crop rotation, wide spacing",
-        "treatment": "Spray carbendazim (1g/liter) or copper oxychloride at boll formation",
-        "organic_treatment": "Spray garlic extract, improve air circulation, avoid excess nitrogen"
-    },
-    {
-        "crop": "Cotton",
-        "symptom": "reddish-purple leaves starting from margins in older leaves",
-        "possible_issue": "Phosphorus deficiency",
-        "severity": "Medium",
-        "season": "Cool temperatures, acidic soils",
-        "prevention": "Apply balanced fertilizers including phosphorus, soil testing",
-        "treatment": "Apply single super phosphate (SSP @ 200-250kg/ha) as basal dose",
-        "organic_treatment": "Apply rock phosphate, bone meal, phosphorus-solubilizing bacteria"
-    },
-    {
-        "crop": "Cotton",
-        "symptom": "squares and small bolls falling with bore holes and larval presence",
-        "possible_issue": "Pink bollworm infestation",
-        "severity": "Very High",
-        "season": "During flowering and boll formation",
-        "prevention": "Destroy crop residues, use pheromone traps (@10/ha), early sowing",
-        "treatment": "Spray emamectin benzoate (0.5g/liter) or spinosad (0.3ml/liter)",
-        "organic_treatment": "Release Trichogramma wasps, apply neem seed kernel extract (5%), use Bt cotton"
-    },
-    {
-        "crop": "Mango",
-        "symptom": "Black spots on fruits",
-        "possible_issue": "Anthracnose",
-        "severity": "High",
-        "season": "All seasons",
-        "prevention": "Use healthy planting material, crop rotation",
-        "treatment": "Remove affected plants",
-        "organic_treatment": ""
-    }
+  {
+    "crop": "Tomato",
+    "symptom": "wilted plants despite adequate water, yellowing leaves, brown vascular tissue",
+    "possible_issue": "Fusarium wilt",
+    "severity": "High",
+    "season": "Warm soil temperatures (28-32°C)",
+    "prevention": "Use resistant varieties (VFN), avoid continuous tomato cropping, solarize soil",
+    "treatment": "Remove infected plants, treat soil with carbendazim (1g/liter)",
+    "organic_treatment": "Apply Trichoderma viride, practice 4-year crop rotation"
+  },
+  {
+    "crop": "Tomato",
+    "symptom": "concentric dark spots with yellow halos on lower leaves",
+    "possible_issue": "Early blight",
+    "severity": "Medium",
+    "season": "Wet and humid conditions",
+    "prevention": "Avoid overhead irrigation, ensure proper spacing (60-90cm), stake plants",
+    "treatment": "Spray copper-based fungicide (2g/liter) or Mancozeb (2g/liter) every 7-10 days",
+    "organic_treatment": "Spray baking soda solution (1 tbsp/gallon), improve air circulation"
+  },
+  {
+    "crop": "Rice",
+    "symptom": "small oval brown spots with gray centers on leaves",
+    "possible_issue": "Brown spot disease",
+    "severity": "Medium to High",
+    "season": "High humidity and temperature",
+    "prevention": "Maintain proper spacing, avoid excess nitrogen fertilizers, use resistant varieties",
+    "treatment": "Apply edifenphos (1ml/liter) or Mancozeb (2g/liter) at tillering and pre-flowering",
+    "organic_treatment": "Apply neem cake, use Pseudomonas fluorescens seed treatment"
+  },
+  {
+    "crop": "Rice",
+    "symptom": "wilting with yellow-white lesions along leaf edges",
+    "possible_issue": "Bacterial blight",
+    "severity": "High",
+    "season": "Rainy season with strong winds",
+    "prevention": "Use certified disease-free seeds, practice field sanitation, avoid wounding plants",
+    "treatment": "Spray copper-based bactericides (2g/liter) at first symptom appearance",
+    "organic_treatment": "Apply garlic-chili extract, use resistant varieties"
+  },
+  {
+    "crop": "Rice",
+    "symptom": "yellowing from leaf tips and margins with orange-brown spots",
+    "possible_issue": "Potassium deficiency",
+    "severity": "Medium",
+    "season": "All seasons, worse in sandy soils",
+    "prevention": "Ensure balanced fertilizer use, incorporate rice straw",
+    "treatment": "Apply muriate of potash (MOP) @ 60-80kg/ha during tillering",
+    "organic_treatment": "Apply wood ash (2-3 tons/ha), compost with banana residues"
+  },
+  {
+    "crop": "Rice",
+    "symptom": "stunted growth with yellow-orange leaves and reduced tillering",
+    "possible_issue": "Tungro virus",
+    "severity": "Very High",
+    "season": "Throughout growing season",
+    "prevention": "Control green leafhoppers with nets, plant resistant varieties, synchronous planting",
+    "treatment": "No direct cure, remove infected plants, spray insecticides for vectors",
+    "organic_treatment": "Apply neem oil for leafhopper control, use barrier crops"
+  },
+  {
+    "crop": "Wheat",
+    "symptom": "yellow-orange pustules in stripes on leaves",
+    "possible_issue": "Stripe rust",
+    "severity": "High",
+    "season": "Cool temperatures (10-15°C) with dew",
+    "prevention": "Plant resistant varieties, avoid late sowing, remove volunteer plants",
+    "treatment": "Apply propiconazole (1ml/liter) at first sign, repeat after 15 days",
+    "organic_treatment": "Spray horsetail tea, use sulfur dusting"
+  },
+  {
+    "crop": "Wheat",
+    "symptom": "black powdery masses replacing grains",
+    "possible_issue": "Loose smut",
+    "severity": "Medium",
+    "season": "Flowering period with high humidity",
+    "prevention": "Use disease-free seeds, treat seeds before sowing, solar treatment of seeds",
+    "treatment": "Seed treatment with carboxin (2g/kg seed) or tebuconazole",
+    "organic_treatment": "Hot water treatment (52°C for 11 minutes), use certified organic seeds"
+  },
+  {
+    "crop": "Wheat",
+    "symptom": "yellowing of lower leaves with stunted growth",
+    "possible_issue": "Nitrogen deficiency",
+    "severity": "Medium",
+    "season": "All seasons, worse in waterlogged soils",
+    "prevention": "Use balanced fertilizer management, soil testing, legume intercropping",
+    "treatment": "Apply urea fertilizer @ 100-150kg/ha in split doses",
+    "organic_treatment": "Apply composted manure, green manure with sunn hemp"
+  },
+  {
+    "crop": "Maize",
+    "symptom": "elongated grayish lesions with yellow margins on leaves",
+    "possible_issue": "Turcicum leaf blight",
+    "severity": "High",
+    "season": "Cool temperatures with high humidity",
+    "prevention": "Plant resistant hybrids, crop rotation with non-cereals, destroy crop residues",
+    "treatment": "Apply mancozeb (2.5g/liter) or azoxystrobin at disease appearance",
+    "organic_treatment": "Spray fermented buttermilk, use Trichoderma application"
+  },
+  {
+    "crop": "Maize",
+    "symptom": "dead hearts in young plants, bore holes in stems with frass",
+    "possible_issue": "Stem borer infestation",
+    "severity": "High",
+    "season": "Throughout crop growth, peak in summer",
+    "prevention": "Use pheromone traps (@5/ha), timely sowing, light traps",
+    "treatment": "Apply chlorpyriphos (2.5ml/liter) in whorls or carbofuran granules @ 8kg/ha",
+    "organic_treatment": "Release Trichogramma wasps (@50,000/ha), apply neem seed kernel extract (5%)"
+  },
+  {
+    "crop": "Maize",
+    "symptom": "yellow-white stripes between veins starting from base",
+    "possible_issue": "Zinc deficiency",
+    "severity": "Medium",
+    "season": "Cool and wet conditions, high pH soils",
+    "prevention": "Ensure micronutrient-rich soil, soil testing, organic matter addition",
+    "treatment": "Apply zinc sulfate (ZnSO4 @ 25kg/ha) as basal dose",
+    "organic_treatment": "Apply zinc-enriched compost, use zinc-solubilizing bacteria"
+  },
+  {
+    "crop": "Potato",
+    "symptom": "upward curling of leaves with rigid texture and purple tints",
+    "possible_issue": "Potato leaf roll virus",
+    "severity": "High",
+    "season": "Warm conditions favoring aphids",
+    "prevention": "Use certified seed tubers, control aphid vectors, rogue infected plants",
+    "treatment": "Remove infected plants, spray imidacloprid (0.3ml/liter) for aphids",
+    "organic_treatment": "Apply kaolin clay, use reflective mulches, beneficial insects"
+  },
+  {
+    "crop": "Potato",
+    "symptom": "water-soaked dark lesions on leaves with white mold in humid conditions",
+    "possible_issue": "Late blight",
+    "severity": "Very High",
+    "season": "Cool, wet weather (15-25°C)",
+    "prevention": "Avoid waterlogging, plant resistant varieties, ensure good drainage",
+    "treatment": "Spray metalaxyl + mancozeb (2g/liter) preventively, repeat every 7-10 days",
+    "organic_treatment": "Spray copper sulfate (0.5%), use resistant varieties, early harvesting"
+  },
+  {
+    "crop": "Potato",
+    "symptom": "yellowing between veins of lower leaves with possible red-purple tints",
+    "possible_issue": "Magnesium deficiency",
+    "severity": "Low to Medium",
+    "season": "All seasons, acidic soils",
+    "prevention": "Maintain balanced fertilization, soil testing, proper pH management",
+    "treatment": "Apply magnesium sulfate (MgSO4 @ 10-15kg/ha) as foliar spray",
+    "organic_treatment": "Apply dolomitic lime, compost with magnesium-rich materials"
+  },
+  {
+    "crop": "Cotton",
+    "symptom": "water-soaked bolls turning black with pinkish mold in humid weather",
+    "possible_issue": "Boll rot disease",
+    "severity": "High",
+    "season": "High humidity during boll formation",
+    "prevention": "Avoid excess irrigation, practice crop rotation, wide spacing",
+    "treatment": "Spray carbendazim (1g/liter) or copper oxychloride at boll formation",
+    "organic_treatment": "Spray garlic extract, improve air circulation, avoid excess nitrogen"
+  },
+  {
+    "crop": "Cotton",
+    "symptom": "reddish-purple leaves starting from margins in older leaves",
+    "possible_issue": "Phosphorus deficiency",
+    "severity": "Medium",
+    "season": "Cool temperatures, acidic soils",
+    "prevention": "Apply balanced fertilizers including phosphorus, soil testing",
+    "treatment": "Apply single super phosphate (SSP @ 200-250kg/ha) as basal dose",
+    "organic_treatment": "Apply rock phosphate, bone meal, phosphorus-solubilizing bacteria"
+  },
+  {
+    "crop": "Cotton",
+    "symptom": "squares and small bolls falling with bore holes and larval presence",
+    "possible_issue": "Pink bollworm infestation",
+    "severity": "Very High",
+    "season": "During flowering and boll formation",
+    "prevention": "Destroy crop residues, use pheromone traps (@10/ha), early sowing",
+    "treatment": "Spray emamectin benzoate (0.5g/liter) or spinosad (0.3ml/liter)",
+    "organic_treatment": "Release Trichogramma wasps, apply neem seed kernel extract (5%), use Bt cotton"
+  },
+  {
+    "crop": "Mango",
+    "symptom": "Black spots on fruits",
+    "possible_issue": "Anthracnose",
+    "severity": "High",
+    "season": "All seasons",
+    "prevention": "Use healthy planting material, crop rotation",
+    "treatment": "Remove affected plants",
+    "organic_treatment": ""
+  },
+  {
+    "crop": "Neem",
+    "symptom": "tiny insects on young shoots causing curling leaves",
+    "possible_issue": "Aphid Attack",
+    "severity": "",
+    "season": "",
+    "prevention": "Encourage natural predators like ladybird beetles.",
+    "treatment": "Spray neem seed kernel extract (NSKE 5%).",
+    "organic_treatment": ""
+  },
+  {
+    "crop": "Papaya",
+    "symptom": "black spots",
+    "possible_issue": "Anthracnose",
+    "severity": "",
+    "season": "",
+    "prevention": "",
+    "treatment": "",
+    "organic_treatment": ""
+  }
 ]
