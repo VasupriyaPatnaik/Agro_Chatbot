@@ -40,15 +40,22 @@ AgroBot is an AI-powered chatbot that helps farmers diagnose crop health issues 
      source venv/bin/activate
      ```
 
-4. **Install dependencies**:
+4. **Install basic dependencies**:
    ```bash
-   pip install flask
+   pip install flask googletrans==4.0.0rc1 werkzeug
    ```
 
-5. **Ensure you have the required files**:
+5. **Optional: Install ML dependencies for image classification**:
+   ```bash
+   # Only install if you need image classification features
+   pip install tensorflow opencv-python numpy pillow
+   ```
+
+6. **Ensure you have the required files**:
    - `app.py` (Flask application)
    - `knowledge_base.json` (Crop disease database)
-   - `templates/index.html` (Web interface)
+   - `templates/` folder (Web interface)
+   - `model.h5` (Optional: AI model for image classification)
 
 ## Usage
 
@@ -57,12 +64,21 @@ AgroBot is an AI-powered chatbot that helps farmers diagnose crop health issues 
    python app.py
    ```
 
-2. **Open your web browser** and go to:
+2. **For image classification features (optional)**:
+   ```bash
+   set ENABLE_ML=true && python app.py
+   ```
+
+3. **Open your web browser** and go to:
    ```
    http://127.0.0.1:5000
    ```
 
-3. **Interact with AgroBot**:
+4. **Login credentials**:
+   - **Farmer account**: username: `farmer`, password: `farmer123`
+   - **Admin account**: username: `admin`, password: `admin123`
+
+5. **Interact with AgroBot**:
    - Enter the crop type (e.g., "Tomato")
    - Describe the symptoms (e.g., "yellow leaves with brown edges")
    - Click the send button or press Enter
