@@ -1,5 +1,25 @@
 venv/
 model.h5
 kaggle.json
-plant-disease-recognition-dataset.zip/
+
+# Zip files
+*.zip
+plant-disease-recognition-dataset.zip
 plant_leaf_disease_predictor/
+
+# Dataset directories
+uploads/
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.venv/
+
+# Database files
+*.db
+*.sqlite3
