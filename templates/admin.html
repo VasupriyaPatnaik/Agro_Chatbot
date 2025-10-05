@@ -3,214 +3,463 @@
 <head>
   <meta charset="UTF-8">
   <title>AgroBot Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f9f4; }
-    h2 { color: #2c7a2c; display: inline-block; margin-right: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
-    th { background: #2c7a2c; color: white; }
-    button { padding: 6px 10px; margin: 2px; border: none; border-radius: 6px; cursor: pointer; }
-    .add-btn { background: #4caf50; color: white; }
-    .delete-btn { background: #f44336; color: white; }
-    .save-btn { background: #2196f3; color: white; }
-    .edit-btn { background: #ff9800; color: white; }
-    .lang-select { padding: 6px 10px; border-radius: 6px; border: 1px solid #ccc; margin-left: 10px; }
-    textarea { width: 100%; min-height: 50px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 20px; background: linear-gradient(135deg, #f4f9f4 0%, #e8f5e9 100%); min-height: 100vh; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .header h1 { color: #2c7a2c; display: flex; align-items: center; gap: 10px; font-size: 1.8rem; }
+    .controls { display: flex; gap: 15px; align-items: center; }
+    .lang-select { padding: 10px 15px; border-radius: 8px; border: 2px solid #e1e5e9; background: white; font-size: 1rem; cursor: pointer; transition: border-color 0.3s; }
+    .lang-select:focus { outline: none; border-color: #4caf50; }
+    .add-btn { background: linear-gradient(135deg, #4caf50, #2c7a2c); color: white; padding: 12px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+    .add-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    th, td { border: 1px solid #e0e0e0; padding: 15px 12px; text-align: left; vertical-align: top; }
+    th { background: linear-gradient(135deg, #2c7a2c, #4caf50); color: white; font-weight: 600; font-size: 0.9rem; }
+    tr:nth-child(even) { background: #f8f9fa; } tr:hover { background: #e8f5e9; }
+    button { padding: 8px 12px; margin: 2px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; display: inline-flex; align-items: center; gap: 4px; }
+    .edit-btn { background: #ff9800; color: white; } .edit-btn:hover { background: #f57c00; transform: translateY(-1px); }
+    .save-btn { background: #2196f3; color: white; } .save-btn:hover { background: #1976d2; transform: translateY(-1px); }
+    .delete-btn { background: #f44336; color: white; } .delete-btn:hover { background: #d32f2f; transform: translateY(-1px); }
+    .cancel-btn { background: #9e9e9e; color: white; } .cancel-btn:hover { background: #757575; transform: translateY(-1px); }
+    textarea, input { width: 100%; padding: 8px 10px; border: 2px solid #e1e5e9; border-radius: 6px; font-size: 0.9rem; font-family: inherit; transition: border-color 0.3s; }
+    textarea:focus, input:focus { outline: none; border-color: #4caf50; box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1); }
+    textarea { min-height: 60px; resize: vertical; }
+    .multiline { white-space: pre-wrap; line-height: 1.4; }
+    .actions { display: flex; gap: 5px; flex-wrap: wrap; }
+    .notification { position: fixed; top: 20px; right: 20px; padding: 15px 20px; border-radius: 8px; color: white; font-weight: 600; z-index: 1000; transform: translateX(400px); transition: transform 0.3s ease; }
+    .notification.show { transform: translateX(0); }
+    .notification.success { background: #4caf50; } .notification.error { background: #f44336; }
+    .loading { opacity: 0.6; pointer-events: none; }
+    @media (max-width: 1200px) { .table-container { overflow-x: auto; } table { min-width: 1000px; } }
+    @media (max-width: 768px) { .header { flex-direction: column; gap: 15px; align-items: stretch; } .controls { justify-content: space-between; } }
   </style>
 </head>
 <body>
-<h2>🌱 AgroBot Admin Dashboard</h2>
-<select id="languageSelect" class="lang-select" onchange="changeLanguage()">
-  <option value="en">English</option>
-  <option value="hi">हिंदी</option>
-  <option value="te">తెలుగు</option>
-</select>
-<button class="add-btn" onclick="showAddRow()" id="addBtn">➕ Add New Entry</button>
+<div class="header">
+  <h1><i class="fas fa-robot"></i> AgroBot Admin Dashboard</h1>
+  <div class="controls">
+    <select id="languageSelect" class="lang-select" onchange="changeLanguage()">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+    <button class="add-btn" onclick="showAddRow()" id="addBtn"><i class="fas fa-plus"></i> <span id="addBtnText">Add New Entry</span></button>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr id="tableHeader"></tr>
-  </thead>
-  <tbody id="dataTable"></tbody>
-</table>
+<div class="table-container">
+  <table>
+    <thead><tr id="tableHeader"></tr></thead>
+    <tbody id="dataTable"></tbody>
+  </table>
+</div>
 
+<div id="notification" class="notification"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 <script>
 let userLanguage = 'en';
-let translations = {
-  en: { headers: ['Crop','Symptom','Possible Issue','Severity','Season','Prevention','Treatment','Organic Treatment','Actions'], addBtn: '➕ Add New Entry' },
-  hi: { headers: ['फसल','लक्षण','संभावित समस्या','तीव्रता','मौसमी अवधि','रोकथाम','उपचार','संग्रहित उपचार','क्रियाएँ'], addBtn: '➕ नया एंट्री जोड़ें' },
-  te: { headers: ['పంట','లక్షణం','సాధ్యమైన సమస్య','తీవ్రత','సీజన్','నివారణ','చికిత్స','సేంద్రీకృత చికిత్స','క్రియలు'], addBtn: '➕ కొత్త ఎంట్రీ జోడించండి' }
+let knowledgeBase = [];
+let originalKnowledgeBase = []; // Store original English data
+
+const translations = {
+  en: { 
+    headers: ['Crop', 'Symptom', 'Possible Issue', 'Severity', 'Season', 'Prevention', 'Treatment', 'Organic Treatment', 'Actions'],
+    addBtn: 'Add New Entry', edit: 'Edit', save: 'Save', cancel: 'Cancel', delete: 'Delete',
+    confirmDelete: 'Are you sure you want to delete this entry?',
+    successAdd: '✅ Entry added successfully!', successUpdate: '✅ Entry updated successfully!', successDelete: '🗑️ Entry deleted successfully!',
+    error: '❌ Operation failed. Please try again.', noEntries: 'No entries found. Click "Add New Entry" to create one.',
+    loading: 'Translating data...'
+  },
+  hi: { 
+    headers: ['फसल', 'लक्षण', 'संभावित समस्या', 'गंभीरता', 'मौसम', 'रोकथाम', 'उपचार', 'संगठित उपचार', 'क्रियाएँ'],
+    addBtn: 'नई प्रविष्टि जोड़ें', edit: 'संपादित करें', save: 'सहेजें', cancel: 'रद्द करें', delete: 'हटाएँ',
+    confirmDelete: 'क्या आप वाकई इस प्रविष्टि को हटाना चाहते हैं?',
+    successAdd: '✅ प्रविष्टि सफलतापूर्वक जोड़ी गई!', successUpdate: '✅ प्रविष्टि सफलतापूर्वक अपडेट की गई!', successDelete: '🗑️ प्रविष्टि हटाई गई!',
+    error: '❌ ऑपरेशन विफल। कृपया पुनः प्रयास करें।', noEntries: 'कोई प्रविष्टि नहीं मिली। नई प्रविष्टि बनाने के लिए "नई प्रविष्टि जोड़ें" पर क्लिक करें।',
+    loading: 'डेटा अनुवादित किया जा रहा है...'
+  },
+  te: { 
+    headers: ['పంట', 'లక్షణం', 'సంభావ్య సమస్య', 'తీక్ష్ణత', 'సీజన్', 'నిరోధకత', 'చికిత్స', 'సేంద్రీయ చికిత్స', 'క్రియలు'],
+    addBtn: 'కొత్త ఎంట్రీ జోడించండి', edit: 'సంపాదించండి', save: 'సేవ్', cancel: 'రద్దు', delete: 'తొలగించండి',
+    confirmDelete: 'ఈ ఎంట్రీని నిజంగా తొలగించాలా?',
+    successAdd: '✅ ఎంట్రీ విజయవంతంగా జోడించబడింది!', successUpdate: '✅ ఎంట్రీ విజయవంతంగా నవీకరించబడింది!', successDelete: '🗑️ ఎంట్రీని తొలగించబడింది!',
+    error: '❌ ఆపరేషన్ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి.', noEntries: 'ఏ ఎంట్రీలు లేవు. ఒక కొత్త ఎంట్రీ సృష్టించడానికి "కొత్త ఎంట్రీ జోడించండి" క్లిక్ చేయండి।',
+    loading: 'డేటా అనువదించబడుతోంది...'
+  }
 };
 
-// Change language
+// Language codes mapping
+const languageCodes = {
+  'en': 'en',
+  'hi': 'hi', 
+  'te': 'te'
+};
+
+function showNotification(msg, type = 'success') {
+  const n = document.getElementById('notification'); 
+  n.textContent = msg; 
+  n.className = `notification ${type} show`;
+  setTimeout(() => n.classList.remove('show'), 4000);
+}
+
+async function loadKB() {
+  try { 
+    const res = await fetch('/admin/data');
+    if (!res.ok) throw new Error('Failed to fetch data');
+    originalKnowledgeBase = await res.json();
+    knowledgeBase = [...originalKnowledgeBase]; // Create a copy
+    renderTable(); 
+  } catch(e) { 
+    console.error('Error loading KB:', e);
+    showNotification(translations[userLanguage].error, 'error'); 
+  }
+}
+
+// Translate text using backend
+async function translateText(text, targetLang) {
+  if (!text || targetLang === 'en') return text;
+  
+  try {
+    const response = await fetch('/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: text,
+        target_lang: targetLang
+      })
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      return data.translated_text || text;
+    }
+    return text;
+  } catch (error) {
+    console.error('Translation error:', error);
+    return text;
+  }
+}
+
+// Translate entire knowledge base
+async function translateKnowledgeBase(targetLang) {
+  if (targetLang === 'en') {
+    knowledgeBase = [...originalKnowledgeBase];
+    return;
+  }
+
+  showNotification(translations[userLanguage].loading, 'success');
+  document.body.classList.add('loading');
+
+  try {
+    const translatedKB = [];
+    
+    for (const entry of originalKnowledgeBase) {
+      const translatedEntry = {
+        crop: await translateText(entry.crop, targetLang),
+        symptom: await translateText(entry.symptom, targetLang),
+        possible_issue: await translateText(entry.possible_issue, targetLang),
+        severity: await translateText(entry.severity, targetLang),
+        season: await translateText(entry.season, targetLang),
+        prevention: await translateText(entry.prevention, targetLang),
+        treatment: await translateText(entry.treatment, targetLang),
+        organic_treatment: await translateText(entry.organic_treatment, targetLang)
+      };
+      translatedKB.push(translatedEntry);
+    }
+    
+    knowledgeBase = translatedKB;
+  } catch (error) {
+    console.error('Error translating knowledge base:', error);
+    knowledgeBase = [...originalKnowledgeBase]; // Fallback to English
+  } finally {
+    document.body.classList.remove('loading');
+  }
+}
+
+async function addEntryToServer(newEntry) {
+  try {
+    const res = await fetch('/admin/data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newEntry)
+    });
+    if (!res.ok) throw new Error('Failed to add entry');
+    const result = await res.json();
+    
+    // Add to both original and current KB
+    originalKnowledgeBase.unshift(newEntry);
+    if (userLanguage === 'en') {
+      knowledgeBase.unshift(newEntry);
+    } else {
+      // Translate the new entry and add to current KB
+      const translatedEntry = {
+        crop: await translateText(newEntry.crop, userLanguage),
+        symptom: await translateText(newEntry.symptom, userLanguage),
+        possible_issue: await translateText(newEntry.possible_issue, userLanguage),
+        severity: await translateText(newEntry.severity, userLanguage),
+        season: await translateText(newEntry.season, userLanguage),
+        prevention: await translateText(newEntry.prevention, userLanguage),
+        treatment: await translateText(newEntry.treatment, userLanguage),
+        organic_treatment: await translateText(newEntry.organic_treatment, userLanguage)
+      };
+      knowledgeBase.unshift(translatedEntry);
+    }
+    
+    return result;
+  } catch(e) {
+    console.error('Error adding entry:', e);
+    throw e;
+  }
+}
+
+async function updateEntryOnServer(index, updatedEntry) {
+  try {
+    const res = await fetch('/admin/data', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ index, ...updatedEntry })
+    });
+    if (!res.ok) throw new Error('Failed to update entry');
+    const result = await res.json();
+    
+    // Update both original and current KB
+    originalKnowledgeBase[index] = updatedEntry;
+    if (userLanguage === 'en') {
+      knowledgeBase[index] = updatedEntry;
+    } else {
+      // Translate the updated entry
+      const translatedEntry = {
+        crop: await translateText(updatedEntry.crop, userLanguage),
+        symptom: await translateText(updatedEntry.symptom, userLanguage),
+        possible_issue: await translateText(updatedEntry.possible_issue, userLanguage),
+        severity: await translateText(updatedEntry.severity, userLanguage),
+        season: await translateText(updatedEntry.season, userLanguage),
+        prevention: await translateText(updatedEntry.prevention, userLanguage),
+        treatment: await translateText(updatedEntry.treatment, userLanguage),
+        organic_treatment: await translateText(updatedEntry.organic_treatment, userLanguage)
+      };
+      knowledgeBase[index] = translatedEntry;
+    }
+    
+    return result;
+  } catch(e) {
+    console.error('Error updating entry:', e);
+    throw e;
+  }
+}
+
+async function deleteEntryFromServer(index) {
+  try {
+    const res = await fetch('/admin/data', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ index })
+    });
+    if (!res.ok) throw new Error('Failed to delete entry');
+    const result = await res.json();
+    
+    // Remove from both original and current KB
+    originalKnowledgeBase.splice(index, 1);
+    knowledgeBase.splice(index, 1);
+    
+    return result;
+  } catch(e) {
+    console.error('Error deleting entry:', e);
+    throw e;
+  }
+}
+
 async function changeLanguage() {
   userLanguage = document.getElementById('languageSelect').value;
-  const headerRow = document.getElementById('tableHeader');
-  headerRow.innerHTML = translations[userLanguage].headers.map(h => `<th>${h}</th>`).join('');
-  document.getElementById('addBtn').textContent = translations[userLanguage].addBtn;
-  await loadData();
+  const t = translations[userLanguage];
+  
+  // Update UI text
+  document.getElementById('addBtnText').textContent = t.addBtn;
+  document.getElementById('tableHeader').innerHTML = t.headers.map(h => `<th>${h}</th>`).join('');
+  
+  // Translate knowledge base data
+  await translateKnowledgeBase(userLanguage);
+  renderTable();
 }
 
-// Load table data
-async function loadData() {
-  try {
-    const res = await fetch('/admin/data');
-    const data = await res.json();
-    const table = document.getElementById('dataTable');
-    table.innerHTML = '';
-    for(let i=0;i<data.length;i++){
-      renderRow(data[i], i);
-    }
-  } catch(e){ console.error(e); }
-}
-
-// Render one row
-async function renderRow(row, i){
-  let fields = [
-    row.crop || '', row.symptom || '', row.possible_issue || '', row.severity || '',
-    row.season || '', row.prevention || '', row.treatment || '', row.organic_treatment || ''
-  ];
-  if(userLanguage !== 'en'){
-    fields = await Promise.all(fields.map(f => f ? translateText(f) : ''));
+function renderTable() {
+  const table = document.getElementById('dataTable'); 
+  const t = translations[userLanguage]; 
+  table.innerHTML = '';
+  
+  if (knowledgeBase.length === 0) { 
+    table.innerHTML = `<tr><td colspan="${t.headers.length}" style="text-align:center;padding:40px;color:#666;">${t.noEntries}</td></tr>`; 
+    return; 
   }
-  const table = document.getElementById('dataTable');
-  table.innerHTML += `<tr id="row-${i}">
-    <td class="view-mode">${fields[0]}</td>
-    <td class="view-mode multiline">${fields[1]}</td>
-    <td class="view-mode">${fields[2]}</td>
-    <td class="view-mode">${fields[3]}</td>
-    <td class="view-mode">${fields[4]}</td>
-    <td class="view-mode multiline">${fields[5]}</td>
-    <td class="view-mode multiline">${fields[6]}</td>
-    <td class="view-mode multiline">${fields[7]}</td>
+  
+  knowledgeBase.forEach((row, i) => {
+    const tr = document.createElement('tr'); 
+    tr.id = `row-${i}`;
+    tr.innerHTML = `
+      <td>${row.crop || ''}</td>
+      <td class="multiline">${row.symptom || ''}</td>
+      <td>${row.possible_issue || ''}</td>
+      <td>${row.severity || ''}</td>
+      <td>${row.season || ''}</td>
+      <td class="multiline">${row.prevention || ''}</td>
+      <td class="multiline">${row.treatment || ''}</td>
+      <td class="multiline">${row.organic_treatment || ''}</td>
+      <td>
+        <div class="actions">
+          <button class="edit-btn" onclick="editRow(${i})">
+            <i class="fas fa-edit"></i> ${t.edit}
+          </button>
+          <button class="delete-btn" onclick="deleteRow(${i})">
+            <i class="fas fa-trash"></i> ${t.delete}
+          </button>
+        </div>
+      </td>`;
+    table.appendChild(tr);
+  });
+}
+
+function editRow(i) {
+  // When editing, show the original English data for accurate editing
+  const originalRow = originalKnowledgeBase[i];
+  const tr = document.getElementById(`row-${i}`); 
+  const t = translations[userLanguage];
+  
+  const editHTML = `
+    <td><input value="${originalRow.crop || ''}"></td>
+    <td><textarea>${originalRow.symptom || ''}</textarea></td>
+    <td><input value="${originalRow.possible_issue || ''}"></td>
+    <td><input value="${originalRow.severity || ''}"></td>
+    <td><input value="${originalRow.season || ''}"></td>
+    <td><textarea>${originalRow.prevention || ''}</textarea></td>
+    <td><textarea>${originalRow.treatment || ''}</textarea></td>
+    <td><textarea>${originalRow.organic_treatment || ''}</textarea></td>
     <td>
-      <button class="edit-btn" onclick="editRow(${i})">Edit</button>
-      <button class="save-btn" onclick="saveRow(${i})" style="display:none;">Save</button>
-      <button class="delete-btn" onclick="deleteRow(${i})">Delete</button>
-    </td>
-  </tr>`;
+      <div class="actions">
+        <button class="save-btn" onclick="saveRow(${i})">
+          <i class="fas fa-save"></i> ${t.save}
+        </button>
+        <button class="cancel-btn" onclick="cancelEdit(${i})">
+          <i class="fas fa-times"></i> ${t.cancel}
+        </button>
+      </div>
+    </td>`;
+  
+  tr.innerHTML = editHTML;
 }
 
-// Translate text
-async function translateText(text){
-  try{
-    const res = await fetch('/translate_text',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({text:text, lang:userLanguage})
-    });
-    const data = await res.json();
-    return data.translated || text;
-  }catch(e){ return text; }
+function cancelEdit(i) {
+  renderTable();
 }
 
-// Translate to English
-async function translateToEnglish(text){
-  if(!text) return '';
-  try{
-    const res = await fetch('/translate_text',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({text:text, lang:'en'})
-    });
-    const data = await res.json();
-    return data.translated || text;
-  } catch(e){ return text; }
-}
-
-// Edit row
-function editRow(i){
-  const row = document.getElementById(`row-${i}`);
-  const tds = row.querySelectorAll('td');
-  tds.forEach(td=>{
-    if(td.classList.contains('view-mode')){
-      const val = td.innerText;
-      td.innerHTML = td.classList.contains('multiline') ? `<textarea>${val}</textarea>` : `<input type="text" value="${val}">`;
-    }
-  });
-  row.querySelector('.edit-btn').style.display='none';
-  row.querySelector('.save-btn').style.display='inline-block';
-}
-
-// Save row
-async function saveRow(i){
-  const row = document.getElementById(`row-${i}`);
-  const tds = row.querySelectorAll('td');
-  const values = Array.from(tds)
-    .filter(td=>td.querySelector('input') || td.querySelector('textarea'))
-    .map(td => (td.querySelector('input')?.value || td.querySelector('textarea')?.value).trim());
-
-  const [crop,symptom,possible_issue,severity,season,prevention,treatment,organic] = await Promise.all(
-    values.map(v => v ? translateToEnglish(v) : '')
-  );
-
-  const res = await fetch('/admin/update/'+i,{
-    method:'PUT',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({crop,symptom,possible_issue,severity,season,prevention,treatment,organic_treatment:organic})
-  });
-  const result = await res.json();
-  if(result.status === "success"){
-    alert("✅ Entry updated successfully!");
-    await loadData();
-  } else {
-    alert("❌ Failed to update entry.");
+async function saveRow(i) {
+  const tr = document.getElementById(`row-${i}`); 
+  const inputs = tr.querySelectorAll('input, textarea'); 
+  const vals = Array.from(inputs).map(el => el.value.trim());
+  
+  const updatedEntry = {
+    crop: vals[0],
+    symptom: vals[1],
+    possible_issue: vals[2],
+    severity: vals[3],
+    season: vals[4],
+    prevention: vals[5],
+    treatment: vals[6],
+    organic_treatment: vals[7]
+  };
+  
+  try {
+    await updateEntryOnServer(i, updatedEntry);
+    showNotification(translations[userLanguage].successUpdate);
+    renderTable();
+  } catch(e) {
+    showNotification(translations[userLanguage].error, 'error');
   }
 }
 
-// Delete row
-async function deleteRow(i){
-  if(!confirm("Are you sure you want to delete this entry?")) return;
-  const res = await fetch('/admin/delete/'+i,{method:'DELETE'});
-  const result = await res.json();
-  if(result.status === "success"){
-    alert("🗑️ Entry deleted successfully!");
-    await loadData();
-  } else {
-    alert("❌ Failed to delete entry.");
+async function deleteRow(i) {
+  const t = translations[userLanguage]; 
+  if (!confirm(t.confirmDelete)) return;
+  
+  try {
+    await deleteEntryFromServer(i);
+    showNotification(t.successDelete);
+    renderTable();
+  } catch(e) {
+    showNotification(t.error, 'error');
   }
 }
 
-// Show add row
-function showAddRow(){
-  const table = document.getElementById('dataTable');
-  if(document.getElementById("row-new")) return; // prevent multiple
-  const row = `<tr id="row-new">
-    <td><input type="text" id="crop-new"></td>
+function showAddRow() {
+  const table = document.getElementById('dataTable'); 
+  const newRow = document.getElementById('row-new'); 
+  if (newRow) newRow.remove();
+  
+  const tr = document.createElement('tr'); 
+  tr.id = 'row-new'; 
+  tr.style.background = '#e8f5e9';
+  const t = translations[userLanguage];
+  
+  tr.innerHTML = `
+    <td><input id="crop-new"></td>
     <td><textarea id="symptom-new"></textarea></td>
-    <td><input type="text" id="issue-new"></td>
-    <td><input type="text" id="severity-new"></td>
-    <td><input type="text" id="season-new"></td>
+    <td><input id="issue-new"></td>
+    <td><input id="severity-new"></td>
+    <td><input id="season-new"></td>
     <td><textarea id="prevention-new"></textarea></td>
     <td><textarea id="treatment-new"></textarea></td>
     <td><textarea id="organic-new"></textarea></td>
-    <td><button class="save-btn" onclick="addEntry()">Add</button></td>
-  </tr>`;
-  table.insertAdjacentHTML("afterbegin", row);
+    <td>
+      <div class="actions">
+        <button class="save-btn" onclick="addEntry()">
+          <i class="fas fa-plus"></i> ${t.addBtn}
+        </button>
+        <button class="cancel-btn" onclick="cancelAdd()">
+          <i class="fas fa-times"></i> ${t.cancel}
+        </button>
+      </div>
+    </td>`;
+  table.prepend(tr);
 }
 
-// Add new entry
-async function addEntry(){
-  const fields = ['crop','symptom','issue','severity','season','prevention','treatment','organic'].map(id => document.getElementById(`${id}-new`).value.trim());
-  const [crop,symptom,possible_issue,severity,season,prevention,treatment,organic] = await Promise.all(fields.map(f => f ? translateToEnglish(f) : ''));
+function cancelAdd() { 
+  const newRow = document.getElementById('row-new'); 
+  if (newRow) newRow.remove(); 
+}
 
-  const res = await fetch('/admin/add',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({crop,symptom,possible_issue,severity,season,prevention,treatment,organic_treatment:organic})
-  });
-  const result = await res.json();
-
-  if(result.status === "success"){
-    alert("✅ Entry added successfully!");
-    document.getElementById("row-new").remove();
-    renderRow({crop,symptom,possible_issue,severity,season,prevention,treatment,organic_treatment:organic}, document.querySelectorAll("#dataTable tr").length);
-  } else {
-    alert("❌ Failed to add entry.");
+async function addEntry() {
+  const vals = ['crop', 'symptom', 'issue', 'severity', 'season', 'prevention', 'treatment', 'organic']
+    .map(id => {
+      const element = document.getElementById(`${id}-new`);
+      return element ? element.value.trim() : '';
+    });
+  
+  const [crop, symptom, possible_issue, severity, season, prevention, treatment, organic_treatment] = vals; 
+  const t = translations[userLanguage];
+  
+  if (!crop || !symptom || !possible_issue) { 
+    showNotification('Please fill in at least Crop, Symptom, and Possible Issue fields.', 'error'); 
+    return; 
+  }
+  
+  const newEntry = { crop, symptom, possible_issue, severity, season, prevention, treatment, organic_treatment };
+  
+  try {
+    await addEntryToServer(newEntry);
+    showNotification(t.successAdd);
+    cancelAdd();
+    renderTable();
+  } catch(e) {
+    showNotification(t.error, 'error');
   }
 }
 
-changeLanguage();
+document.addEventListener('DOMContentLoaded', () => {
+  changeLanguage();
+  loadKB();
+});
 </script>
 </body>
 </html>
