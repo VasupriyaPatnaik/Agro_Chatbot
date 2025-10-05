@@ -1,212 +1,385 @@
-# 🌱 AgroBot - Crop Symptom Assistant
+# 🌱 AgroBot - AI-Powered Crop Disease Recognition System
 
-AgroBot is an AI-powered chatbot that helps farmers diagnose crop health issues based on symptoms they describe. It provides instant diagnoses, prevention tips, and treatment recommendations for various crop diseases and deficiencies.
+AgroBot is a comprehensive AI-powered agricultural assistant that helps farmers diagnose crop health issues through both **text-based symptom analysis** and **advanced image classification**. Using a trained Convolutional Neural Network (CNN) with 94.7% accuracy, it provides instant diagnoses, prevention tips, and treatment recommendations for various crop diseases.
 
-## Features
+## 🚀 Key Features
 
-- 🤖 Interactive chatbot interface
-- 🌾 Support for multiple crops (Tomato, Rice, Wheat, Maize, Potato, Cotton)
-- 🔍 Symptom-based diagnosis
-- 💡 Detailed prevention and treatment recommendations
-- 🌱 Organic treatment options
-- 📱 Responsive design for mobile and desktop
-- ⚡ Fast and accurate diagnosis using a knowledge base
+### 🤖 Dual Diagnosis Methods
+- **💬 Text-Based Diagnosis**: Describe symptoms in natural language
+- **📸 AI Image Classification**: Upload plant images for instant analysis
+- **🧠 CNN Model**: 94.7% validation accuracy for disease detection
 
-## Supported Crops & Issues
+### � Multi-Language Support
+- **English** - Full support
+- **हिंदी (Hindi)** - Complete translation
+- **తెలుగు (Telugu)** - Full localization
+- **Real-time Translation**: Google Translate integration
 
-- **Tomato**: Yellow leaves, leaf curling, wilted plants, spots on leaves
-- **Rice**: Brown spots, wilting, yellowing leaves, stunted growth
-- **Wheat**: Yellow rust, black powdery heads, yellowing leaves
-- **Maize**: Leaf blight, stem borer damage, yellowing leaves
-- **Potato**: Leaf curling, dark lesions, yellowing leaves
-- **Cotton**: Boll rot, leaf reddening, squares falling
+### 🌾 Comprehensive Coverage
+- **9+ Crop Types**: Tomato, Rice, Wheat, Maize, Potato, Cotton, Mango, Neem, Papaya
+- **21+ Disease Entries**: From common deficiencies to complex diseases
+- **3 Disease Classes**: Healthy, Powdery Mildew, Rust (for image classification)
 
-## Installation
+### 🔐 User Management
+- **Farmer Interface**: Diagnosis and consultation
+- **Admin Dashboard**: Knowledge base management
+- **Secure Authentication**: Password hashing and sessions
 
-1. **Clone or download the project files**
+## 🎯 Supported Diseases & Issues
 
-2. **Create a virtual environment**:
-   ```bash
-   python -m venv venv
-   ```
+### 🍅 **Tomato**
+- Fusarium wilt, Early blight, Nitrogen deficiency
 
-3. **Activate the virtual environment**:
-   - Windows:
-     ```bash
-     venv\Scripts\activate
-     ```
-   - macOS/Linux:
-     ```bash
-     source venv/bin/activate
-     ```
+### 🌾 **Rice** 
+- Brown spot disease, Bacterial blight, Potassium deficiency, Tungro virus
 
-4. **Install basic dependencies**:
-   ```bash
-   pip install flask googletrans==4.0.0rc1 werkzeug
-   ```
+### 🌿 **Wheat**
+- Stripe rust, Loose smut, Nitrogen deficiency
 
-5. **Optional: Install ML dependencies for image classification**:
-   ```bash
-   # Only install if you need image classification features
-   pip install tensorflow opencv-python numpy pillow
-   ```
+### 🌽 **Maize**
+- Turcicum leaf blight, Stem borer, Zinc deficiency
 
-6. **Ensure you have the required files**:
-   - `app.py` (Flask application)
-   - `knowledge_base.json` (Crop disease database)
-   - `templates/` folder (Web interface)
-   - `model.h5` (Optional: AI model for image classification)
+### 🥔 **Potato**
+- Leaf roll virus, Late blight, Magnesium deficiency
 
-## Usage
+### 🌱 **Cotton**
+- Boll rot, Pink bollworm, Phosphorus deficiency
 
-1. **Start the application**:
-   ```bash
-   python app.py
-   ```
+*Plus many more diseases with detailed prevention and treatment protocols*
 
-2. **For image classification features (optional)**:
-   ```bash
-   set ENABLE_ML=true && python app.py
-   ```
+## 🛠️ Technology Stack
 
-3. **Open your web browser** and go to:
-   ```
-   http://127.0.0.1:5000
-   ```
+- **Backend**: Flask (Python)
+- **AI/ML**: TensorFlow 2.18.1, Keras
+- **Image Processing**: OpenCV, PIL, NumPy
+- **Database**: SQLite
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Translation**: Google Translate API
+- **Authentication**: Werkzeug security
 
-4. **Login credentials**:
-   - **Farmer account**: username: `farmer`, password: `farmer123`
-   - **Admin account**: username: `admin`, password: `admin123`
+## 📋 Prerequisites
 
-5. **Interact with AgroBot**:
-   - Enter the crop type (e.g., "Tomato")
-   - Describe the symptoms (e.g., "yellow leaves with brown edges")
-   - Click the send button or press Enter
-   - Receive instant diagnosis and recommendations
+- Python 3.10+
+- 4GB+ RAM (for TensorFlow)
+- Modern web browser
+- Internet connection (for translations)
 
-## API Usage
+## 🚀 Installation & Setup
 
-AgroBot also provides a REST API endpoint for programmatic access:
+### 1. **Clone the Repository**
+```bash
+git clone https://github.com/VasupriyaPatnaik/Agro_Chatbot.git
+cd Agro_Chatbot
+```
 
+### 2. **Create Virtual Environment**
+```bash
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# macOS/Linux  
+source venv/bin/activate
+```
+
+### 3. **Install Dependencies**
+```bash
+# Core dependencies
+pip install flask googletrans==4.0.0rc1 werkzeug
+
+# AI/ML dependencies (for image classification)
+pip install tensorflow opencv-python numpy pillow scikit-learn
+
+# Additional packages
+pip install matplotlib seaborn
+```
+
+### 4. **Setup Kaggle (Optional - for dataset)**
+- Place your `kaggle.json` in the project directory
+- Used for downloading plant disease datasets
+
+## 🎮 Usage
+
+### **Quick Start**
+```bash
+# Start with AI image classification enabled
+python app.py
+```
+
+### **Environment Options**
+```bash
+# Disable ML (basic mode)
+set ENABLE_ML=false && python app.py
+
+# Enable debug mode
+set FLASK_DEBUG=true && python app.py
+```
+
+### **Access the Application**
+```
+🌐 Web Interface: http://127.0.0.1:5000
+```
+
+### **Login Credentials**
+```
+👨‍🌾 Farmer: farmer / farmer123
+👨‍💼 Admin:  admin / admin123
+```
+
+## 🖥️ User Interfaces
+
+### **Farmer Interface**
+- Interactive chatbot with suggested symptoms
+- Image upload for disease classification  
+- Multi-language support
+- Treatment recommendations
+
+### **Admin Dashboard**
+- Knowledge base management (CRUD operations)
+- System statistics and ML status
+- User management capabilities
+
+## 📊 AI Model Performance
+
+### **Training Results**
+- **Validation Accuracy**: 94.7%
+- **Training Accuracy**: 93.3%
+- **Model Architecture**: CNN with BatchNormalization
+- **Input Size**: 225×225×3 (RGB images)
+- **Classes**: 3 (Healthy, Powdery, Rust)
+
+### **Training Configuration**
+- **Epochs**: 20 (with early stopping)
+- **Batch Size**: 32
+- **Data Augmentation**: Rotation, zoom, shift, brightness
+- **Callbacks**: ReduceLROnPlateau, EarlyStopping
+
+## 🔌 API Endpoints
+
+### **Text Diagnosis**
 ```bash
 POST /diagnose
 Content-Type: application/json
 
 {
-  "crop": "Tomato",
-  "symptom": "yellow leaves with brown edges"
+  "text": "My tomato plants have yellow leaves with brown spots",
+  "lang": "en",
+  "location": "Maharashtra"
 }
 ```
 
-Response:
-```json
+### **Image Prediction**
+```bash
+POST /predict
+Content-Type: multipart/form-data
+
 {
-  "status": "success",
-  "result": {
-    "crop": "Tomato",
-    "symptom": "yellow leaves starting from bottom with brown edges",
-    "possible_issue": "Nitrogen deficiency",
-    "severity": "Medium",
-    "season": "All seasons, more common in rainy season",
-    "prevention": "Ensure proper soil fertility with compost, rotate crops with legumes...",
-    "treatment": "Apply urea (100-150kg/ha) or organic compost to restore nitrogen",
-    "organic_treatment": "Apply compost tea or fish emulsion, use legume cover crops"
-  }
+  "file": <image_file>,
+  "lang": "en",
+  "location": "Maharashtra"
 }
 ```
 
-## Project Structure
+### **Admin Operations**
+```bash
+GET    /admin/data     # View knowledge base
+POST   /admin/data     # Add entry
+PUT    /admin/data     # Update entry  
+DELETE /admin/data     # Delete entry
+```
+
+## 📁 Project Structure
 
 ```
 AgroBot/
-├── app.py                 # Flask application
-├── knowledge_base.json    # Crop disease knowledge base
-├── venv/                  # Virtual environment (created)
+├── app.py                          # Main Flask application
+├── model.h5                        # Trained CNN model (94.7% accuracy)
+├── model.ipynb                     # Jupyter notebook with training pipeline
+├── knowledge_base.json             # Disease database (21+ entries)
+├── agrobot.db                      # SQLite user database
+├── requirements.txt                # Python dependencies
+├── kaggle.json                     # Kaggle API credentials
 ├── templates/
-│   └── index.html         # Web interface
-└── README.md              # This file
+│   ├── index.html                  # Farmer interface
+│   ├── admin.html                  # Admin dashboard
+│   └── login.html                  # Authentication page
+├── uploads/                        # Temporary image storage
+├── plant_leaf_disease_predictor/   # Training dataset
+└── __pycache__/                    # Python cache
 ```
 
-## Knowledge Base Format
+## 🧠 Model Training
 
-The `knowledge_base.json` file contains entries in the following format:
+The CNN model was trained using the included Jupyter notebook:
 
-```json
-{
-  "crop": "Tomato",
-  "symptom": "yellow leaves starting from bottom with brown edges",
-  "possible_issue": "Nitrogen deficiency",
-  "severity": "Medium",
-  "season": "All seasons, more common in rainy season",
-  "prevention": "Ensure proper soil fertility with compost...",
-  "treatment": "Apply urea (100-150kg/ha) or organic compost...",
-  "organic_treatment": "Apply compost tea or fish emulsion..."
-}
+### **Dataset**
+- **Source**: Kaggle plant disease recognition dataset
+- **Classes**: Healthy, Powdery Mildew, Rust
+- **Training Images**: ~1,300 images
+- **Validation Images**: ~150 images
+
+### **Architecture**
+```python
+model = Sequential([
+    Conv2D(32, (3,3), activation='relu', input_shape=(225,225,3)),
+    BatchNormalization(),
+    MaxPooling2D(2,2),
+    
+    Conv2D(64, (3,3), activation='relu'),
+    BatchNormalization(), 
+    MaxPooling2D(2,2),
+    
+    Conv2D(128, (3,3), activation='relu'),
+    BatchNormalization(),
+    MaxPooling2D(2,2),
+    
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dropout(0.5),
+    Dense(3, activation='softmax')
+])
 ```
 
-## Customization
+### **Training Features**
+- Data augmentation for better generalization
+- Class weight balancing
+- Learning rate scheduling
+- Early stopping to prevent overfitting
 
-### Adding New Crop Information
+## 🌍 Multi-Language Features
 
-1. Edit the `knowledge_base.json` file
-2. Add new entries following the existing format
-3. Restart the Flask application
+### **Supported Languages**
+- **English**: Complete interface and responses
+- **Hindi**: Full translation with proper Unicode support
+- **Telugu**: Complete localization for Telugu-speaking farmers
 
-### Modifying the Interface
+### **Translation Capabilities**
+- Real-time symptom translation
+- Diagnosis result translation
+- User interface localization
+- Fallback to original text if translation fails
 
-Edit `templates/index.html` to:
-- Change colors and styling
-- Add new UI elements
-- Modify the chatbot behavior
+## 🔧 Configuration
 
-## Troubleshooting
+### **Environment Variables**
+```bash
+ENABLE_ML=true           # Enable/disable TensorFlow
+FLASK_SECRET_KEY=secret  # Session security key
+FLASK_DEBUG=false        # Debug mode toggle
+```
 
-### Common Issues
+### **Customization Options**
+- Modify `knowledge_base.json` to add new diseases
+- Update `templates/` for UI customization
+- Retrain model with new plant disease data
+- Add new language translations
 
-1. **Application won't start**:
-   - Ensure Flask is installed: `pip install flask`
-   - Check Python version: `python --version` (requires Python 3.6+)
+## 🛠️ Development Setup
 
-2. **No diagnoses found**:
-   - Verify `knowledge_base.json` exists in the same directory
-   - Check the JSON format is valid
+### **Model Training Environment**
+```bash
+# Install additional training dependencies
+pip install kaggle jupyter matplotlib seaborn
 
-3. **Import errors**:
-   - Make sure all dependencies are installed
-   - Try reactivating the virtual environment
+# Launch Jupyter for model training
+jupyter notebook model.ipynb
+```
 
-### Getting Help
+### **Adding New Diseases**
+1. Update `knowledge_base.json` with new entries
+2. Follow the existing JSON schema
+3. Include prevention and treatment information
+4. Test with the application
 
-If you encounter issues:
-1. Check that all files are in the correct location
-2. Verify the knowledge_base.json format is valid JSON
-3. Ensure you're using a supported Python version
+## 🚨 Troubleshooting
 
-## Contributing
+### **Common Issues**
 
-To contribute to AgroBot:
-1. Add new crop disease information to `knowledge_base.json`
-2. Follow the existing JSON format
-3. Include detailed prevention and treatment information
-4. Test your changes before submitting
+**TensorFlow Import Errors**
+```bash
+# Try without ML first
+set ENABLE_ML=false && python app.py
+```
 
-## License
+**Missing Model File**
+```bash
+# Train new model using model.ipynb
+# Or download pre-trained model.h5
+```
 
-This project is open source and available under the MIT License.
+**Translation Errors**
+```bash
+# Check internet connection
+# Verify Google Translate API access
+```
 
-## Acknowledgments
+**Database Issues**
+```bash
+# Delete agrobot.db to reset
+# Database will be recreated automatically
+```
 
-- Farmers and agricultural experts who provided knowledge
-- Flask framework for web application support
-- Font Awesome for icons
+## 🧪 Testing
 
-## Support
+### **Test Image Classification**
+1. Upload plant images through the web interface
+2. Check terminal for classification confidence scores
+3. Verify results match expected disease types
 
-For questions or support, please check:
-1. The knowledge base file for existing information
-2. Flask documentation for technical issues
-3. Agricultural extension services for farming advice
+### **Test Text Diagnosis**
+```javascript
+// Example test inputs
+"My tomato plants have yellow leaves"
+"Rice showing brown spots on leaves"  
+"Wheat plants with orange rust on stems"
+```
+
+## 🤝 Contributing
+
+### **How to Contribute**
+1. Fork the repository
+2. Add new disease entries to knowledge base
+3. Improve model accuracy with more training data
+4. Add support for new languages
+5. Enhance UI/UX features
+
+### **Contribution Guidelines**
+- Follow existing code style
+- Add comprehensive comments
+- Test new features thoroughly
+- Update documentation
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Kaggle** for plant disease datasets
+- **TensorFlow/Keras** for deep learning framework
+- **Flask** for web application framework
+- **Agricultural experts** for domain knowledge
+- **Farmers** for real-world testing and feedback
+
+## 📞 Support & Contact
+
+- **GitHub Issues**: Report bugs and feature requests
+- **Email**: Technical support and questions
+- **Documentation**: Check this README for common solutions
+
+## 🎯 Future Enhancements
+
+- [ ] Support for more crop types
+- [ ] Mobile app development
+- [ ] Integration with weather APIs
+- [ ] Soil health analysis
+- [ ] Pest identification features
+- [ ] Offline mode capabilities
+- [ ] Real-time chat with agricultural experts
 
 ---
 
-**Happy Farming!** 🌾👨‍🌾👩‍🌾
+**🌾 Empowering Farmers with AI Technology! 👨‍🌾👩‍🌾**
+
+*Made with ❤️ for sustainable agriculture and food security*
