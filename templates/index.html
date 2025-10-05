@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>🌱 AgroBot - Crop Symptom Assistant</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
       --primary-color: #2c7a2c;
@@ -22,7 +22,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
     }
 
     body {
@@ -32,7 +32,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: center
     }
 
     .container {
@@ -44,7 +44,7 @@
       box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      height: 85vh;
+      height: 85vh
     }
 
     .header {
@@ -56,11 +56,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .header-content {
-      flex: 1;
+      align-items: center
     }
 
     .header h1 {
@@ -68,14 +64,7 @@
       margin: 0;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .header p {
-      margin-top: 5px;
-      opacity: 0.9;
-      font-size: 0.9rem;
+      gap: 10px
     }
 
     .clear-chat {
@@ -86,11 +75,11 @@
       border-radius: 20px;
       cursor: pointer;
       font-size: 0.8rem;
-      transition: background 0.3s;
+      transition: background 0.3s
     }
 
     .clear-chat:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.3)
     }
 
     .language-select {
@@ -98,7 +87,7 @@
       padding: 5px 8px;
       border-radius: 8px;
       border: none;
-      cursor: pointer;
+      cursor: pointer
     }
 
     .chat-container {
@@ -108,7 +97,7 @@
       background: #f9f9f9;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 15px
     }
 
     .message {
@@ -117,31 +106,31 @@
       border-radius: 18px;
       line-height: 1.5;
       position: relative;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.3s ease
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(10px)
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0)
       }
     }
 
     .bot-message {
       align-self: flex-start;
       background: var(--bot-msg-color);
-      border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 4px
     }
 
     .user-message {
       align-self: flex-end;
       background: var(--user-msg-color);
-      border-bottom-right-radius: 4px;
+      border-bottom-right-radius: 4px
     }
 
     .input-area {
@@ -150,7 +139,7 @@
       border-top: 1px solid #eaeaea;
       display: flex;
       gap: 10px;
-      position: relative;
+      position: relative
     }
 
     .input-field {
@@ -160,23 +149,11 @@
       border-radius: 25px;
       font-size: 1rem;
       outline: none;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s
     }
 
     .input-field:focus {
-      border-color: var(--secondary-color);
-    }
-
-    .input-field.error {
-      border-color: var(--error-color);
-    }
-
-    .error-message {
-      color: var(--error-color);
-      font-size: 0.8rem;
-      position: absolute;
-      top: 5px;
-      left: 30px;
+      border-color: var(--secondary-color)
     }
 
     .send-button {
@@ -190,16 +167,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s;
+      transition: background 0.3s
     }
 
     .send-button:hover {
-      background: var(--dark-color);
+      background: var(--dark-color)
     }
 
     .send-button:disabled {
       background: #ccc;
-      cursor: not-allowed;
+      cursor: not-allowed
+    }
+
+    .send-button.processing {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .diagnosis-card {
@@ -208,44 +195,24 @@
       padding: 15px;
       margin-top: 10px;
       box-shadow: var(--shadow);
-      border-left: 4px solid var(--primary-color);
+      border-left: 4px solid var(--primary-color)
     }
 
-    .diagnosis-card h3 {
-      color: var(--primary-color);
-      margin-bottom: 10px;
+    .advice-section {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 3px solid var(--primary-color);
+    }
+
+    .advice-title {
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 5px;
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .diagnosis-card p {
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .info-badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: bold;
-      margin-right: 8px;
-    }
-
-    .severity-high {
-      background-color: #ffebee;
-      color: #d32f2f;
-    }
-
-    .severity-medium {
-      background-color: #fff8e1;
-      color: #ff8f00;
-    }
-
-    .severity-low {
-      background-color: #e8f5e9;
-      color: #388e3c;
+      gap: 5px;
     }
 
     .typing-indicator {
@@ -254,7 +221,7 @@
       background: var(--bot-msg-color);
       padding: 12px 16px;
       border-radius: 18px;
-      border-bottom-left-radius: 4px;
+      border-bottom-left-radius: 4px
     }
 
     .typing-dot {
@@ -263,72 +230,167 @@
       background: rgba(0, 0, 0, 0.3);
       border-radius: 50%;
       margin: 0 3px;
-      animation: typingAnimation 1.4s infinite;
+      animation: typingAnimation 1.4s infinite
     }
 
     .typing-dot:nth-child(2) {
-      animation-delay: 0.2s;
+      animation-delay: 0.2s
     }
 
     .typing-dot:nth-child(3) {
-      animation-delay: 0.4s;
+      animation-delay: 0.4s
     }
 
     @keyframes typingAnimation {
+
       0%,
       60%,
       100% {
-        transform: translateY(0);
+        transform: translateY(0)
       }
 
       30% {
-        transform: translateY(-5px);
+        transform: translateY(-5px)
       }
     }
 
-    .suggestion-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
+    .suggestion-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px
     }
 
-    .suggestion-chip {
-      background: white;
-      border: 1px solid var(--primary-color);
-      color: var(--primary-color);
-      padding: 8px 15px;
-      border-radius: 18px;
-      font-size: 0.9rem;
+    .suggestion-box {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border: 1px solid #dee2e6;
+      border-radius: 12px;
+      padding: 12px 15px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden
     }
 
-    .suggestion-chip:hover {
+    .suggestion-box:hover {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3)
+    }
+
+    .image-upload-container {
+      background: white;
+      padding: 15px;
+      border-top: 1px solid #eaeaea;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px
+    }
+
+    .image-preview {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      border: 2px dashed #ccc;
+      object-fit: cover;
+      display: none
+    }
+
+    .upload-label {
       background: var(--primary-color);
       color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s
     }
 
-    @media (max-width: 768px) {
+    .upload-label:hover {
+      background: var(--dark-color)
+    }
+
+    #imageInput {
+      display: none
+    }
+
+    .predict-btn {
+      background: var(--secondary-color);
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s
+    }
+
+    .predict-btn:hover {
+      background: var(--dark-color)
+    }
+
+    .predict-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed
+    }
+
+    .predict-btn.processing {
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Better scrollbar */
+    .chat-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .chat-container::-webkit-scrollbar-thumb {
+      background: var(--primary-color);
+      border-radius: 3px;
+    }
+
+    .success-message {
+      border-left: 4px solid #4caf50;
+    }
+
+    .error-message {
+      border-left: 4px solid #f44336;
+    }
+
+    @media (max-width:768px) {
       .container {
         height: 92vh;
-        border-radius: 15px;
+        border-radius: 15px
       }
 
       .message {
-        max-width: 85%;
+        max-width: 85%
       }
 
       .header h1 {
-        font-size: 1.5rem;
+        font-size: 1.5rem
       }
 
       .input-area {
-        flex-direction: column;
+        flex-direction: column
       }
 
-      .send-button {
-        align-self: flex-end;
+      .suggestion-boxes {
+        grid-template-columns: 1fr
+      }
+
+      .suggestion-box {
+        font-size: 0.8rem;
+        padding: 10px 12px
       }
     }
   </style>
@@ -339,7 +401,7 @@
     <div class="header">
       <div class="header-content">
         <h1><i class="fas fa-robot"></i> AgroBot Assistant</h1>
-        <p id="headerSubtitle">Your AI-powered crop health diagnosis expert</p>
+        <p id="headerSubtitle"></p>
       </div>
       <div>
         <select class="language-select" id="languageSelect" onchange="changeLanguage()">
@@ -348,20 +410,34 @@
           <option value="te">తెలుగు</option>
         </select>
         <button class="clear-chat" onclick="clearChat()">
-          <i class="fas fa-broom"></i> <span id="clearText">Clear Chat</span>
+          <i class="fas fa-broom"></i> <span id="clearText"></span>
         </button>
       </div>
     </div>
 
     <div class="chat-container" id="chatContainer"></div>
 
-    <form method="POST" class="input-area" id="diagnosisForm">
-      <input type="text" name="crop" class="input-field" placeholder="Enter crop (e.g., Tomato)" required id="cropInput">
-      <input type="text" name="symptom" class="input-field" placeholder="Describe symptoms (e.g., yellow leaves)" required id="symptomInput">
+    <div class="suggestions-container" id="suggestionsContainer">
+      <div class="suggestion-boxes" id="suggestionBoxes"></div>
+    </div>
+
+    <form class="input-area" id="diagnosisForm">
+      <input type="text" name="text" class="input-field" placeholder="" required id="userInput">
       <button type="submit" class="send-button" id="submitButton">
         <i class="fas fa-paper-plane"></i>
       </button>
     </form>
+
+    <div class="image-upload-container">
+      <label for="imageInput" class="upload-label">
+        <i class="fas fa-upload"></i> <span id="uploadText">Upload Crop Image</span>
+      </label>
+      <input type="file" id="imageInput" accept="image/*" />
+      <img id="imagePreview" class="image-preview" alt="Preview" />
+      <button id="predictBtn" class="predict-btn" disabled>
+        <span id="predictText">Predict from Image</span>
+      </button>
+    </div>
   </div>
 
   <script>
@@ -369,69 +445,161 @@
 
     const translations = {
       en: {
-        greeting: "Hello! I'm AgroBot, your crop health assistant. I can help diagnose plant issues based on symptoms you describe.",
-        placeholders: { crop: "Enter crop (e.g., Tomato)", symptom: "Describe symptoms (e.g., yellow leaves)" },
+        greeting: "Hello! I'm AgroBot, your crop health assistant. I can help diagnose plant issues based on symptoms you describe or images you upload.",
+        placeholders: { symptom: "Describe your crop issue (e.g., my tomato plants have yellow leaves)" },
         buttons: { clear: "Clear Chat" },
         headerSubtitle: "Your AI-powered crop health diagnosis expert",
-        suggestions: { tomato: "Tomato: Yellow leaves", rice: "Rice: Brown spots", maize: "Maize: Yellow stripes" },
         followUp: "Is there anything else you'd like to know about your crops?",
-        emptyFields: "Please fill both fields",
-        labels: {
-          possible_issue: "Possible Issue",
-          season: "Season/Risk Period",
+        emptyFields: "Please describe your crop issue",
+        upload: "Upload Crop Image",
+        predict: "Predict from Image",
+        processing: "Processing...",
+        examplePhrases: "Try describing issues like",
+        example1: "My tomato plants have yellow leaves",
+        example2: "Brown spots on wheat leaves",
+        imageUploaded: "📸 Image uploaded, analyzing crop health...",
+        errorProcessing: "❌ Error processing your request. Please try again.",
+        errorImage: "❌ Error processing image. Please try again.",
+        unexpectedError: "Unexpected response format from server.",
+        suggestions: [
+          "Tomato: yellow leaves with brown spots",
+          "Rice: white powdery substance on leaves", 
+          "Wheat: orange pustules on stems",
+          "Corn: grayish-white lesions on leaves"
+        ],
+        diagnosis: {
+          basedOnSymptoms: "Based on the symptoms you described",
+          forCrop: "for your {crop} crop",
+          atLocation: "at {location}",
+          mightBeAffected: "it might be affected by {disease}",
+          severity: "Severity",
+          recommendedActions: "Recommended Actions",
           prevention: "Prevention",
           treatment: "Treatment",
-          organic_treatment: "Organic Treatment",
-          severity: "Severity"
+          organicOptions: "Organic Treatment",
+          noDetailedAdvice: "No detailed advice is available",
+          genericCrop: "crop",
+          information: "Information",
+          consultExperts: "Please consult with local agricultural experts for specific guidance.",
+          genericDisease: "a plant disease"
+        },
+        userInputPrefix: {
+          my: "My",
+          plants: "plants have",
+          have: "have"
         }
       },
       hi: {
-        greeting: "नमस्ते! मैं AgroBot हूँ, आपका फसल स्वास्थ्य सहायक। मैं लक्षणों के आधार पर पौधों की समस्याओं का निदान करने में मदद कर सकता हूँ।",
-        placeholders: { crop: "फसल दर्ज करें (जैसे, टमाटर)", symptom: "लक्षणों का विवरण दें (जैसे, पीले पत्ते)" },
+        greeting: "नमस्ते! मैं AgroBot हूँ, आपका फसल स्वास्थ्य सहायक। मैं लक्षणों या अपलोड की गई छवियों के आधार पर पौधों की समस्याओं का निदान करने में मदद कर सकता हूँ।",
+        placeholders: { symptom: "अपनी फसल की समस्या का वर्णन करें (जैसे, मेरे टमाटर के पौधों की पत्तियाँ पीली हो गई हैं)" },
         buttons: { clear: "चैट साफ़ करें" },
         headerSubtitle: "आपके AI-पावर्ड फसल स्वास्थ्य निदान विशेषज्ञ",
-        suggestions: { tomato: "टमाटर: पीले पत्ते", rice: "चावल: भूरे धब्बे", maize: "मकई: पीली धारियाँ" },
         followUp: "क्या आप अपनी फसलों के बारे में कुछ और जानना चाहते हैं?",
-        emptyFields: "कृपया दोनों फ़ील्ड भरें",
-        labels: {
-          possible_issue: "संभावित समस्या",
-          season: "मौसम/जोखिम अवधि",
+        emptyFields: "कृपया अपनी फसल की समस्या का वर्णन करें",
+        upload: "फसल छवि अपलोड करें",
+        predict: "छवि से भविष्यवाणी करें",
+        processing: "प्रसंस्करण...",
+        examplePhrases: "इस तरह की समस्याओं का वर्णन करने का प्रयास करें",
+        example1: "मेरे टमाटर के पौधों की पत्तियाँ पीली हो गई हैं",
+        example2: "गेहूं की पत्तियों पर भूरे धब्बे",
+        imageUploaded: "📸 छवि अपलोड की गई, फसल स्वास्थ्य का विश्लेषण किया जा रहा है...",
+        errorProcessing: "❌ आपके अनुरोध को संसाधित करने में त्रुटि। कृपया पुनः प्रयास करें।",
+        errorImage: "❌ छवि संसाधित करने में त्रुटि। कृपया पुनः प्रयास करें।",
+        unexpectedError: "सर्वर से अप्रत्याशित प्रतिक्रिया प्रारूप।",
+        suggestions: [
+          "टमाटर: भूरे धब्बों के साथ पीली पत्तियाँ",
+          "चावल: पत्तियों पर सफेद पाउडर जैसा पदार्थ",
+          "गेहूं: तनों पर नारंगी फुंसियां",
+          "मक्का: पत्तियों पर भूरे-सफेद घाव"
+        ],
+        diagnosis: {
+          basedOnSymptoms: "आपके द्वारा बताए गए लक्षणों के आधार पर",
+          forCrop: "आपकी {crop} फसल के लिए",
+          atLocation: "{location} स्थान पर",
+          mightBeAffected: "यह {disease} से प्रभावित हो सकती है",
+          severity: "गंभीरता",
+          recommendedActions: "सिफारिश की गई कार्रवाई",
           prevention: "रोकथाम",
           treatment: "उपचार",
-          organic_treatment: "जैविक उपचार",
-          severity: "तीव्रता"
+          organicOptions: "जैविक उपचार",
+          noDetailedAdvice: "कोई विस्तृत सलाह उपलब्ध नहीं है",
+          genericCrop: "फसल",
+          information: "जानकारी",
+          consultExperts: "कृपया विशिष्ट मार्गदर्शन के लिए स्थानीय कृषि विशेषज्ञों से परामर्श लें।",
+          genericDisease: "एक पौधे की बीमारी"
+        },
+        userInputPrefix: {
+          my: "मेरे",
+          plants: "पौधों",
+          have: "में हैं"
         }
       },
       te: {
-        greeting: "నమస్కారం! నేను AgroBot, మీ పంట ఆరోగ్య సహాయకుడు. మీరు వివరించే లక్షణాల ఆధారంగా మొక్కల సమస్యలను గుర్తించడానికి నేను సహాయం చేయగలను.",
-        placeholders: { crop: "పంటను నమోదు చేయండి (ఉదా., టమోటా)", symptom: "లక్షణాలను వివరించండి (ఉదా., పసుపు ఆకు)" },
+        greeting: "నమస్కారం! నేను AgroBot, మీ పంట ఆరోగ్య సహాయకుడు. మీరు వివరించే లక్షణాలు లేదా అప్లోడ్ చేసిన చిత్రాల ఆధారంగా మొక్కల సమస్యలను గుర్తించడానికి నేను సహాయం చేయగలను.",
+        placeholders: { symptom: "మీ పంట సమస్యను వివరించండి (ఉదా: నా టమాటా మొక్కల ఆకులు పసుపు రంగులో ఉన్నాయి)" },
         buttons: { clear: "చాట్ క్లియర్ చేయండి" },
         headerSubtitle: "మీ AI-శక్తిగల పంట ఆరోగ్య నిర్ధారణ నిపుణుడు",
-        suggestions: { tomato: "టమోటా: పసుపు ఆకులు", rice: "అన్నం: గోధుమ మచ్చలు", maize: "మక్కజొన్న: పసుపు రేఖలు" },
         followUp: "మీ పంటల గురించి మరేదైనా తెలుసుకోవాలనుకుంటున్నారా?",
-        emptyFields: "దయచేసి రెండు ఫీల్డ్‌లు కూడా నింపండి",
-        labels: {
-          possible_issue: "సంభావ్య సమస్య",
-          season: "ఋతువు/జోखिम కాలం",
+        emptyFields: "దయచేసి మీ పంట సమస్యను వివరించండి",
+        upload: "పంట చిత్రం అప్లోడ్ చేయండి",
+        predict: "చిత్రం నుండి అంచనా వేయండి",
+        processing: "ప్రాసెసింగ్...",
+        examplePhrases: "ఈ విధమైన సమస్యలను వివరించడానికి ప్రయత్నించండి",
+        example1: "నా టమాటా మొక్కల ఆకులు పసుపు రంగులో ఉన్నాయి",
+        example2: "గోధుమ ఆకులపై గోధుమ మచ్చలు",
+        imageUploaded: "📸 చిత్రం అప్లోడ్ చేయబడింది, పంట ఆరోగ్యం విశ్లేషించబడుతోంది...",
+        errorProcessing: "❌ మీ అభ్యర్థనను ప్రాసెస్ చేయడంలో లోపం. దయచేసి మళ్లీ ప్రయత్నించండి.",
+        errorImage: "❌ చిత్రాన్ని ప్రాసెస్ చేయడంలో లోపం. దయచేసి మళ్లీ ప్రయత్నించండి.",
+        unexpectedError: "సర్వర్ నుండి అనూహ్య ప్రతిస్పందన ఫార్మాట్.",
+        suggestions: [
+          "టమాటో: గోధుమ మచ్చలతో పసుపు ఆకులు",
+          "వరి: ఆకులపై తెల్లటి పొడి పదార్థం",
+          "గోధుమ: కాడలపై నారింజ రంగు బొబ్బలు",
+          "మొక్కజొన్న: ఆకులపై బూడిద-తెలుపు పుండ్లు"
+        ],
+        diagnosis: {
+          basedOnSymptoms: "మీరు వివరించిన లక్షణాల ఆధారంగా",
+          forCrop: "మీ {crop} పంటకు",
+          atLocation: "{location} స్థానంలో",
+          mightBeAffected: "ఇది {disease}తో ప్రభావితమై ఉండవచ్చు",
+          severity: "తీవ్రత",
+          recommendedActions: "సిఫారసు చేసిన చర్యలు",
           prevention: "నివారణ",
           treatment: "చికిత్స",
-          organic_treatment: "సేంద్రీయ చికిత్స",
-          severity: "తీవ్రత"
+          organicOptions: "సేంద్రీయ చికిత్స",
+          noDetailedAdvice: "వివరణాత్మక సలహా అందుబాటులో లేదు",
+          genericCrop: "పంట",
+          information: "సమాచారం",
+          consultExperts: "దయచేసి నిర్దిష్ట మార్గదర్శకత్వం కోసం స్థానిక వ్యవసాయ నిపుణులను సంప్రదించండి.",
+          genericDisease: "ఒక మొక్క రోగం"
+        },
+        userInputPrefix: {
+          my: "నా",
+          plants: "మొక్కల",
+          have: "లో ఉన్నాయి"
         }
       }
     };
 
-    function addMessage(text, isUser = false) {
-      const chatContainer = document.getElementById('chatContainer');
+    const chatContainer = document.getElementById('chatContainer');
+    const suggestionBoxes = document.getElementById('suggestionBoxes');
+    const userInput = document.getElementById('userInput');
+    const headerSubtitle = document.getElementById('headerSubtitle');
+    const clearText = document.getElementById('clearText');
+    const uploadText = document.getElementById('uploadText');
+    const predictText = document.getElementById('predictText');
+    const submitButton = document.getElementById('submitButton');
+    const predictBtn = document.getElementById('predictBtn');
+
+    function addMessage(html, isUser = false, isError = false) {
       const messageDiv = document.createElement('div');
-      messageDiv.className = isUser ? 'message user-message' : 'message bot-message';
-      messageDiv.innerHTML = text;
+      messageDiv.className = isUser ? 'message user-message' : `message bot-message ${isError ? 'error-message' : 'success-message'}`;
+      messageDiv.innerHTML = html;
       chatContainer.appendChild(messageDiv);
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
     function showTypingIndicator() {
-      const chatContainer = document.getElementById('chatContainer');
       const typingDiv = document.createElement('div');
       typingDiv.className = 'message bot-message';
       typingDiv.id = 'typingIndicator';
@@ -441,38 +609,47 @@
     }
 
     function hideTypingIndicator() {
-      const typingIndicator = document.getElementById('typingIndicator');
-      if (typingIndicator) typingIndicator.remove();
+      const el = document.getElementById('typingIndicator');
+      if (el) el.remove();
     }
 
-    function fillSuggestion(crop, symptom) {
-      document.getElementById('cropInput').value = crop;
-      document.getElementById('symptomInput').value = symptom;
-    }
-
-    function updateUITexts(lang) {
-      const t = translations[lang];
-      document.getElementById('cropInput').placeholder = t.placeholders.crop;
-      document.getElementById('symptomInput').placeholder = t.placeholders.symptom;
-      document.getElementById('clearText').textContent = t.buttons.clear;
-      document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
-
-      const suggestionChipsHTML = `<div class="suggestion-chips">
-        <div class="suggestion-chip" onclick="fillSuggestion('${t.suggestions.tomato.split(':')[0]}','${t.suggestions.tomato.split(':')[1].trim()}')">${t.suggestions.tomato}</div>
-        <div class="suggestion-chip" onclick="fillSuggestion('${t.suggestions.rice.split(':')[0]}','${t.suggestions.rice.split(':')[1].trim()}')">${t.suggestions.rice}</div>
-        <div class="suggestion-chip" onclick="fillSuggestion('${t.suggestions.maize.split(':')[0]}','${t.suggestions.maize.split(':')[1].trim()}')">${t.suggestions.maize}</div>
-      </div>`;
-      return suggestionChipsHTML;
+    function renderSuggestions() {
+      suggestionBoxes.innerHTML = '';
+      const t = translations[userLanguage];
+      const suggestions = t.suggestions;
+      
+      suggestions.forEach(suggestion => {
+        const parts = suggestion.split(':');
+        const crop = parts[0].trim();
+        const symptom = parts[1].trim();
+        const div = document.createElement('div');
+        div.className = 'suggestion-box';
+        div.textContent = suggestion;
+        div.onclick = () => {
+          // Use translated prefixes based on selected language
+          const prefix = t.userInputPrefix;
+          userInput.value = `${prefix.my} ${crop} ${prefix.plants} ${prefix.have} ${symptom}`;
+          document.getElementById('suggestionsContainer').style.display = 'none';
+          userInput.focus();
+        };
+        suggestionBoxes.appendChild(div);
+      });
     }
 
     function showInitialBotMessage() {
       const t = translations[userLanguage];
-      const suggestionHTML = updateUITexts(userLanguage);
-      addMessage(`<p>${t.greeting}</p>${suggestionHTML}`);
+      headerSubtitle.textContent = t.headerSubtitle;
+      clearText.textContent = t.buttons.clear;
+      userInput.placeholder = t.placeholders.symptom;
+      uploadText.textContent = t.upload;
+      predictText.textContent = t.predict;
+      renderSuggestions();
+      addMessage(`<p>${t.greeting}</p><p><strong>${t.examplePhrases}:</strong> "${t.example1}" or "${t.example2}"</p>`);
     }
 
     function clearChat() {
-      document.getElementById('chatContainer').innerHTML = '';
+      chatContainer.innerHTML = '';
+      document.getElementById('suggestionsContainer').style.display = 'block';
       showInitialBotMessage();
     }
 
@@ -481,86 +658,328 @@
       clearChat();
     }
 
-    showInitialBotMessage();
-
-    const form = document.getElementById('diagnosisForm');
-    const submitButton = document.getElementById('submitButton');
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      let crop = document.getElementById('cropInput').value.trim();
-      let symptom = document.getElementById('symptomInput').value.trim();
-
-      if (!crop || !symptom) {
-        addMessage(translations[userLanguage].emptyFields, false);
-        return;
+    // Enhanced API response handler with better translation support
+    function handleAPIResponse(data, userInputText = '', isImageResponse = false) {
+      if (data.advice) {
+        // Parse the structured advice from backend
+        const structuredAdvice = parseStructuredAdvice(data.advice, userInputText, isImageResponse);
+        addMessage(structuredAdvice);
+      } else if (data.message) {
+        addMessage(data.message, false, data.status === 'error');
+      } else if (data.error) {
+        addMessage(data.error, false, true);
+      } else {
+        const t = translations[userLanguage];
+        addMessage(t.unexpectedError, false, true);
       }
+    }
 
-      addMessage(`<strong>Crop:</strong> ${crop}<br><strong>Symptom:</strong> ${symptom}`, true);
-      showTypingIndicator();
+    // Parse and structure the advice with proper localization
+    function parseStructuredAdvice(adviceText, userInputText, isImageResponse = false) {
+      const t = translations[userLanguage].diagnosis;
+      
+      // Extract location from user input if present
+      const locationMatch = userInputText.match(/\b(at|in|near)\s+([^,.]+)/i);
+      const location = locationMatch ? locationMatch[2] : '';
+      
+      // Parse the backend response to extract structured information
+      let crop = t.genericCrop; // Use generic crop name in selected language
+      let disease = t.genericDisease;
+      let severity = '';
+      let prevention = '';
+      let treatment = '';
+      let organic = '';
+      
+      // Extract crop from user input first (only for text input, not image)
+      if (!isImageResponse) {
+        const cropMatch = userInputText.match(/\b(tomato|rice|wheat|corn|maize|potato|cotton|soybean|गेहूं|टमाटर|चावल|मक्का|గోధుమ|వరి|టమాటో|మొక్కజొన్న)\b/i);
+        if (cropMatch) {
+          // Translate crop name if it's in another language
+          crop = translateCropName(cropMatch[0]);
+        }
+      }
+      
+      // Parse the backend advice text
+      const severityMatch = adviceText.match(/Severity:\s*([^\.]+)/i);
+      if (severityMatch) severity = severityMatch[1].trim();
+      
+      const preventionMatch = adviceText.match(/Recommended actions:\s*([^\.]+)/i) || adviceText.match(/Prevention:\s*([^\.]+)/i);
+      if (preventionMatch) prevention = preventionMatch[1].trim();
+      
+      const treatmentMatch = adviceText.match(/Treatment:\s*([^\.]+)/i);
+      if (treatmentMatch) treatment = treatmentMatch[1].trim();
+      
+      const organicMatch = adviceText.match(/Organic options:\s*([^\.]+)/i);
+      if (organicMatch) organic = organicMatch[1].trim();
+      
+      // Disease extraction (improved)
+      const diseaseMatch = adviceText.match(/affected by\s+([^\.\(]+)/i) || 
+                          adviceText.match(/might be\s+([^\.]+)/i) ||
+                          adviceText.match(/suggests the crop might be affected by\s+([^\.]+)/i);
+      if (diseaseMatch) disease = diseaseMatch[1].trim();
+      
+      // Check for "no detailed advice" case
+      const noAdviceMatch = adviceText.match(/no detailed advice is available/i);
+      
+      // Build structured response in the user's language
+      let structuredHTML = '';
+      
+      // Main diagnosis line
+      structuredHTML += `<p><strong>${t.basedOnSymptoms} `;
+      structuredHTML += `${t.forCrop.replace('{crop}', crop)}`;
+      if (location) {
+        structuredHTML += ` ${t.atLocation.replace('{location}', location)}`;
+      }
+      
+      if (noAdviceMatch) {
+        structuredHTML += `, ${t.noDetailedAdvice}.</strong></p>`;
+      } else {
+        structuredHTML += `, ${t.mightBeAffected.replace('{disease}', disease)}.</strong></p>`;
+      }
+      
+      // If no detailed advice, show a generic message
+      if (noAdviceMatch) {
+        structuredHTML += `
+          <div class="advice-section">
+            <div class="advice-title">
+              <i class="fas fa-info-circle"></i>
+              ${t.information}
+            </div>
+            <div>${t.noDetailedAdvice}. ${t.consultExperts}</div>
+          </div>
+        `;
+        return structuredHTML;
+      }
+      
+      // Severity section
+      if (severity && severity !== 'N/A') {
+        structuredHTML += `
+          <div class="advice-section">
+            <div class="advice-title">
+              <i class="fas fa-exclamation-triangle"></i>
+              ${t.severity}: ${severity}
+            </div>
+          </div>
+        `;
+      }
+      
+      // Prevention section
+      if (prevention && prevention !== 'N/A') {
+        structuredHTML += `
+          <div class="advice-section">
+            <div class="advice-title">
+              <i class="fas fa-shield-alt"></i>
+              ${t.prevention}
+            </div>
+            <div>${prevention}</div>
+          </div>
+        `;
+      }
+      
+      // Treatment section
+      if (treatment && treatment !== 'N/A') {
+        structuredHTML += `
+          <div class="advice-section">
+            <div class="advice-title">
+              <i class="fas fa-stethoscope"></i>
+              ${t.treatment}
+            </div>
+            <div>${treatment}</div>
+          </div>
+        `;
+      }
+      
+      // Organic treatment section
+      if (organic && organic !== 'N/A' && organic !== 'Not specified') {
+        structuredHTML += `
+          <div class="advice-section">
+            <div class="advice-title">
+              <i class="fas fa-leaf"></i>
+              ${t.organicOptions}
+            </div>
+            <div>${organic}</div>
+          </div>
+        `;
+      }
+      
+      return structuredHTML;
+    }
+
+    // Helper function to translate crop names
+    function translateCropName(cropName) {
+      const cropTranslations = {
+        // English to other languages
+        'tomato': { en: 'tomato', hi: 'टमाटर', te: 'టమాటో' },
+        'wheat': { en: 'wheat', hi: 'गेहूं', te: 'గోధుమ' },
+        'rice': { en: 'rice', hi: 'चावल', te: 'వరి' },
+        'corn': { en: 'corn', hi: 'मक्का', te: 'మొక్కజొన్న' },
+        'maize': { en: 'maize', hi: 'मक्का', te: 'మొక్కజొన్న' },
+        'potato': { en: 'potato', hi: 'आलू', te: 'బంగాళదుంప' },
+        'cotton': { en: 'cotton', hi: 'कपास', te: 'పత్తి' },
+        'soybean': { en: 'soybean', hi: 'सोयाबीन', te: 'సోయాబీన్' },
+        
+        // Hindi to other languages
+        'टमाटर': { en: 'tomato', hi: 'टमाटर', te: 'టమాటో' },
+        'गेहूं': { en: 'wheat', hi: 'गेहूं', te: 'గోధుమ' },
+        'चावल': { en: 'rice', hi: 'चावल', te: 'వరి' },
+        'मक्का': { en: 'corn', hi: 'मक्का', te: 'మొక్కజొన్న' },
+        'आलू': { en: 'potato', hi: 'आलू', te: 'బంగాళదుంప' },
+        'कपास': { en: 'cotton', hi: 'कपास', te: 'పత్తి' },
+        'सोयाबीन': { en: 'soybean', hi: 'सोयाबीन', te: 'సోయాబీన్' },
+        
+        // Telugu to other languages
+        'టమాటో': { en: 'tomato', hi: 'टमाटर', te: 'టమాటో' },
+        'గోధుమ': { en: 'wheat', hi: 'गेहूं', te: 'గోధుమ' },
+        'వరి': { en: 'rice', hi: 'चावल', te: 'వరి' },
+        'మొక్కజొన్న': { en: 'corn', hi: 'मक्का', te: 'మొక్కజొన్న' },
+        'బంగాళదుంప': { en: 'potato', hi: 'आलू', te: 'బంగాళదుంప' },
+        'పత్తి': { en: 'cotton', hi: 'कपास', te: 'పత్తి' },
+        'సోయాబీన్': { en: 'soybean', hi: 'सोयाबीन', te: 'సోయాబీన్' }
+      };
+      
+      const lowerCrop = cropName.toLowerCase();
+      if (cropTranslations[lowerCrop] && cropTranslations[lowerCrop][userLanguage]) {
+        return cropTranslations[lowerCrop][userLanguage];
+      }
+      
+      return cropName; // Return original if no translation found
+    }
+
+    // Text diagnosis form handler
+    document.getElementById('diagnosisForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const text = userInput.value.trim();
+      const t = translations[userLanguage];
+      
+      if (!text) { 
+        addMessage(t.emptyFields, false, true); 
+        return; 
+      }
+      
+      // Disable form during request
       submitButton.disabled = true;
-
+      submitButton.classList.add('processing');
+      userInput.disabled = true;
+      
+      addMessage(`<strong>You:</strong> ${text}`, true);
+      document.getElementById('suggestionsContainer').style.display = 'none';
+      showTypingIndicator();
+      
       try {
-        const response = await fetch('/diagnose', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ crop, symptom, lang: userLanguage })
+        const res = await fetch('/diagnose', { 
+          method: 'POST', 
+          headers: { 'Content-Type': 'application/json' }, 
+          body: JSON.stringify({ text, lang: userLanguage }) 
         });
-
+        
         hideTypingIndicator();
-
-        if (response.ok) {
-          const data = await response.json();
-
-          const fields = {
-            possible_issue: data.possible_issue || 'N/A',
-            season: data.season || 'N/A',
-            prevention: data.prevention || 'N/A',
-            treatment: data.treatment || 'N/A',
-            organic_treatment: data.organic_treatment || 'N/A',
-            severity: data.severity || 'Medium'
-          };
-
-          const translatedFields = fields; // If backend returns localized text, else call translateAllFields(fields, userLanguage)
-
-          let severityClass = 'severity-medium';
-          if (translatedFields.severity.toLowerCase().includes('high')) severityClass = 'severity-high';
-          else if (translatedFields.severity.toLowerCase().includes('low')) severityClass = 'severity-low';
-
-          const labels = translations[userLanguage].labels;
-
-          const diagnosisCard = `<div class="diagnosis-card">
-            <h3><i class="fas fa-diagnoses"></i> ${labels.severity}: <span class="info-badge ${severityClass}">${translatedFields.severity}</span></h3>
-            <p><strong>${labels.possible_issue}:</strong> ${translatedFields.possible_issue}</p>
-            <p><strong>🌤️ ${labels.season}:</strong> ${translatedFields.season}</p>
-            <p><strong>✅ ${labels.prevention}:</strong> ${translatedFields.prevention}</p>
-            <p><strong>💊 ${labels.treatment}:</strong> ${translatedFields.treatment}</p>
-            <p><strong>🌿 ${labels.organic_treatment}:</strong> ${translatedFields.organic_treatment}</p>
-          </div>`;
-
-          addMessage(diagnosisCard);
-
+        const data = await res.json();
+        
+        if (res.ok) {
+          handleAPIResponse(data, text, false);
+          userInput.value = '';
+          
+          // Show follow-up message
           setTimeout(() => {
             showTypingIndicator();
             setTimeout(() => {
               hideTypingIndicator();
-              addMessage(translations[userLanguage].followUp);
-            }, 1000);
-          }, 500);
+              addMessage(t.followUp);
+            }, 800);
+          }, 400);
         } else {
-          const errData = await response.json();
-          addMessage(errData.message || 'No diagnosis found.', false);
+          handleAPIResponse(data);
         }
-
-      } catch (error) {
+      } catch (err) { 
         hideTypingIndicator();
-        addMessage("Error processing your request.", false);
-        console.error(error);
+        console.error('Diagnosis error:', err);
+        addMessage(t.errorProcessing, false, true);
       } finally {
+        // Re-enable form
         submitButton.disabled = false;
+        submitButton.classList.remove('processing');
+        userInput.disabled = false;
+        userInput.focus();
       }
     });
+
+    // Image upload and prediction
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => { 
+          imagePreview.src = e.target.result; 
+          imagePreview.style.display = 'block'; 
+          predictBtn.disabled = false; 
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    predictBtn.addEventListener('click', async () => {
+      if (!imageInput.files[0]) return;
+
+      const t = translations[userLanguage];
+      
+      // Disable during processing
+      predictBtn.disabled = true;
+      predictBtn.classList.add('processing');
+      predictText.textContent = t.processing;
+      imageInput.disabled = true;
+
+      addMessage(`<i>${t.imageUploaded}</i>`, true);
+      showTypingIndicator();
+
+      const formData = new FormData();
+      formData.append('file', imageInput.files[0]);
+      formData.append('lang', userLanguage);
+
+      try {
+        const res = await fetch('/predict', { method: 'POST', body: formData });
+        hideTypingIndicator();
+        const data = await res.json();
+        
+        if (res.ok) {
+          // For image responses, pass empty user input to avoid crop duplication
+          handleAPIResponse(data, '', true);
+          
+          // Show follow-up message
+          setTimeout(() => {
+            showTypingIndicator();
+            setTimeout(() => {
+              hideTypingIndicator();
+              addMessage(t.followUp);
+            }, 800);
+          }, 400);
+        } else {
+          handleAPIResponse(data);
+        }
+      } catch (err) {
+        hideTypingIndicator();
+        console.error('Prediction error:', err);
+        addMessage(t.errorImage, false, true);
+      } finally {
+        // Reset image upload
+        imageInput.value = '';
+        imagePreview.style.display = 'none';
+        predictBtn.disabled = false;
+        predictBtn.classList.remove('processing');
+        predictText.textContent = t.predict;
+        imageInput.disabled = false;
+      }
+    });
+
+    // Initialize the chat
+    showInitialBotMessage();
+
+    // Simple session check (basic implementation)
+    if (!document.cookie.includes('session') && window.location.pathname !== '/login') {
+      console.log('No session detected - user should be redirected to login');
+    }
   </script>
 </body>
-
 </html>
