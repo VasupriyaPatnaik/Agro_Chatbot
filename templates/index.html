@@ -366,6 +366,11 @@
       border-left: 4px solid #f44336;
     }
 
+    .healthy-message {
+      border-left: 4px solid #4caf50;
+      background: #f1f8e9;
+    }
+
     @media (max-width:768px) {
       .container {
         height: 92vh;
@@ -468,10 +473,11 @@
           "Corn: grayish-white lesions on leaves"
         ],
         diagnosis: {
-          basedOnSymptoms: "Based on the symptoms you described",
-          forCrop: "for your {crop} crop",
+          basedOnSymptoms: "Based on the image analysis",
+          forCrop: "for your crop",
           atLocation: "at {location}",
           mightBeAffected: "it might be affected by {disease}",
+          isHealthy: "your crop appears to be <strong>Healthy</strong> 🌱",
           severity: "Severity",
           recommendedActions: "Recommended Actions",
           prevention: "Prevention",
@@ -481,7 +487,17 @@
           genericCrop: "crop",
           information: "Information",
           consultExperts: "Please consult with local agricultural experts for specific guidance.",
-          genericDisease: "a plant disease"
+          genericDisease: "a plant disease",
+          healthyAdvice: "Your plants look healthy! Continue with good agricultural practices like proper watering, balanced fertilization, and regular monitoring.",
+          maintenanceTips: "Maintenance Tips",
+          keepHealthy: "Keep your plants healthy by:",
+          healthyPractices: [
+            "Regular watering with proper drainage",
+            "Balanced fertilization",
+            "Adequate sunlight exposure",
+            "Regular pest monitoring",
+            "Proper spacing for air circulation"
+          ]
         },
         userInputPrefix: {
           my: "My",
@@ -513,10 +529,11 @@
           "मक्का: पत्तियों पर भूरे-सफेद घाव"
         ],
         diagnosis: {
-          basedOnSymptoms: "आपके द्वारा बताए गए लक्षणों के आधार पर",
-          forCrop: "आपकी {crop} फसल के लिए",
+          basedOnSymptoms: "छवि विश्लेषण के आधार पर",
+          forCrop: "आपकी फसल के लिए",
           atLocation: "{location} स्थान पर",
           mightBeAffected: "यह {disease} से प्रभावित हो सकती है",
+          isHealthy: "आपकी फसल <strong>स्वस्थ</strong> प्रतीत होती है 🌱",
           severity: "गंभीरता",
           recommendedActions: "सिफारिश की गई कार्रवाई",
           prevention: "रोकथाम",
@@ -526,7 +543,17 @@
           genericCrop: "फसल",
           information: "जानकारी",
           consultExperts: "कृपया विशिष्ट मार्गदर्शन के लिए स्थानीय कृषि विशेषज्ञों से परामर्श लें।",
-          genericDisease: "एक पौधे की बीमारी"
+          genericDisease: "एक पौधे की बीमारी",
+          healthyAdvice: "आपके पौधे स्वस्थ दिखते हैं! उचित सिंचाई, संतुलित उर्वरक और नियमित निगरानी जैसी अच्छी कृषि पद्धतियाँ जारी रखें।",
+          maintenanceTips: "रखरखाव के सुझाव",
+          keepHealthy: "अपने पौधों को स्वस्थ रखने के लिए:",
+          healthyPractices: [
+            "उचित जल निकासी के साथ नियमित सिंचाई",
+            "संतुलित उर्वरक",
+            "पर्याप्त धूप एक्सपोजर",
+            "नियमित कीट निगरानी",
+            "हवा के संचार के लिए उचित रिक्ति"
+          ]
         },
         userInputPrefix: {
           my: "मेरे",
@@ -558,10 +585,11 @@
           "మొక్కజొన్న: ఆకులపై బూడిద-తెలుపు పుండ్లు"
         ],
         diagnosis: {
-          basedOnSymptoms: "మీరు వివరించిన లక్షణాల ఆధారంగా",
-          forCrop: "మీ {crop} పంటకు",
+          basedOnSymptoms: "చిత్ర విశ్లేషణ ఆధారంగా",
+          forCrop: "మీ పంటకు",
           atLocation: "{location} స్థానంలో",
           mightBeAffected: "ఇది {disease}తో ప్రభావితమై ఉండవచ్చు",
+          isHealthy: "మీ పంట <strong>ఆరోగ్యకరంగా</strong> కనిపిస్తోంది 🌱",
           severity: "తీవ్రత",
           recommendedActions: "సిఫారసు చేసిన చర్యలు",
           prevention: "నివారణ",
@@ -571,7 +599,17 @@
           genericCrop: "పంట",
           information: "సమాచారం",
           consultExperts: "దయచేసి నిర్దిష్ట మార్గదర్శకత్వం కోసం స్థానిక వ్యవసాయ నిపుణులను సంప్రదించండి.",
-          genericDisease: "ఒక మొక్క రోగం"
+          genericDisease: "ఒక మొక్క రోగం",
+          healthyAdvice: "మీ మొక్కలు ఆరోగ్యకరంగా కనిపిస్తున్నాయి! సరైన నీటిపారుదల, సమతుల్య ఎరువులు మరియు నియమిత పర్యవేక్షణ వంటి మంచి వ్యవసాయ పద్ధతులను కొనసాగించండి.",
+          maintenanceTips: "నిర్వహణ చిట్కాలు",
+          keepHealthy: "మీ మొక్కలను ఆరోగ్యంగా ఉంచడానికి:",
+          healthyPractices: [
+            "సరైన జలనికాసంతో నియమిత నీటిపారుదల",
+            "సమతుల్య ఎరువులు",
+            "తగినంత సూర్యరశ్మి ఎక్స్పోజర్",
+            "నియమిత కీటక పర్యవేక్షణ",
+            "గాలి ప్రసరణ కోసం సరైన ఖాళీ"
+          ]
         },
         userInputPrefix: {
           my: "నా",
@@ -591,9 +629,13 @@
     const submitButton = document.getElementById('submitButton');
     const predictBtn = document.getElementById('predictBtn');
 
-    function addMessage(html, isUser = false, isError = false) {
+    function addMessage(html, isUser = false, isError = false, isHealthy = false) {
       const messageDiv = document.createElement('div');
-      messageDiv.className = isUser ? 'message user-message' : `message bot-message ${isError ? 'error-message' : 'success-message'}`;
+      let messageClass = isUser ? 'message user-message' : `message bot-message ${isError ? 'error-message' : 'success-message'}`;
+      if (isHealthy) {
+        messageClass += ' healthy-message';
+      }
+      messageDiv.className = messageClass;
       messageDiv.innerHTML = html;
       chatContainer.appendChild(messageDiv);
       chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -626,7 +668,6 @@
         div.className = 'suggestion-box';
         div.textContent = suggestion;
         div.onclick = () => {
-          // Use translated prefixes based on selected language
           const prefix = t.userInputPrefix;
           userInput.value = `${prefix.my} ${crop} ${prefix.plants} ${prefix.have} ${symptom}`;
           document.getElementById('suggestionsContainer').style.display = 'none';
@@ -661,9 +702,9 @@
     // Enhanced API response handler with better translation support
     function handleAPIResponse(data, userInputText = '', isImageResponse = false) {
       if (data.advice) {
-        // Parse the structured advice from backend
         const structuredAdvice = parseStructuredAdvice(data.advice, userInputText, isImageResponse);
-        addMessage(structuredAdvice);
+        const isHealthy = data.advice.toLowerCase().includes('healthy');
+        addMessage(structuredAdvice, false, false, isHealthy);
       } else if (data.message) {
         addMessage(data.message, false, data.status === 'error');
       } else if (data.error) {
@@ -678,26 +719,37 @@
     function parseStructuredAdvice(adviceText, userInputText, isImageResponse = false) {
       const t = translations[userLanguage].diagnosis;
       
-      // Extract location from user input if present
-      const locationMatch = userInputText.match(/\b(at|in|near)\s+([^,.]+)/i);
-      const location = locationMatch ? locationMatch[2] : '';
+      // Check if it's a healthy plant
+      const isHealthy = adviceText.toLowerCase().includes('healthy');
       
-      // Parse the backend response to extract structured information
-      let crop = t.genericCrop; // Use generic crop name in selected language
+      if (isHealthy) {
+        return `
+          <p><strong>${t.basedOnSymptoms} ${t.forCrop}, ${t.isHealthy}</strong></p>
+          <div class="advice-section">
+            <div class="advice-title">
+              <i class="fas fa-heart"></i>
+              ${t.healthyAdvice}
+            </div>
+          </div>
+          <div class="advice-section">
+            <div class="advice-title">
+              <i class="fas fa-tips"></i>
+              ${t.maintenanceTips}
+            </div>
+            <div><strong>${t.keepHealthy}</strong></div>
+            <ul style="margin-top: 8px; padding-left: 20px;">
+              ${t.healthyPractices.map(practice => `<li>${practice}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+      }
+      
+      // Parse disease information
       let disease = t.genericDisease;
       let severity = '';
       let prevention = '';
       let treatment = '';
       let organic = '';
-      
-      // Extract crop from user input first (only for text input, not image)
-      if (!isImageResponse) {
-        const cropMatch = userInputText.match(/\b(tomato|rice|wheat|corn|maize|potato|cotton|soybean|गेहूं|टमाटर|चावल|मक्का|గోధుమ|వరి|టమాటో|మొక్కజొన్న)\b/i);
-        if (cropMatch) {
-          // Translate crop name if it's in another language
-          crop = translateCropName(cropMatch[0]);
-        }
-      }
       
       // Parse the backend advice text
       const severityMatch = adviceText.match(/Severity:\s*([^\.]+)/i);
@@ -712,7 +764,7 @@
       const organicMatch = adviceText.match(/Organic options:\s*([^\.]+)/i);
       if (organicMatch) organic = organicMatch[1].trim();
       
-      // Disease extraction (improved)
+      // Disease extraction
       const diseaseMatch = adviceText.match(/affected by\s+([^\.\(]+)/i) || 
                           adviceText.match(/might be\s+([^\.]+)/i) ||
                           adviceText.match(/suggests the crop might be affected by\s+([^\.]+)/i);
@@ -721,15 +773,11 @@
       // Check for "no detailed advice" case
       const noAdviceMatch = adviceText.match(/no detailed advice is available/i);
       
-      // Build structured response in the user's language
+      // Build structured response
       let structuredHTML = '';
       
       // Main diagnosis line
-      structuredHTML += `<p><strong>${t.basedOnSymptoms} `;
-      structuredHTML += `${t.forCrop.replace('{crop}', crop)}`;
-      if (location) {
-        structuredHTML += ` ${t.atLocation.replace('{location}', location)}`;
-      }
+      structuredHTML += `<p><strong>${t.basedOnSymptoms} ${t.forCrop}`;
       
       if (noAdviceMatch) {
         structuredHTML += `, ${t.noDetailedAdvice}.</strong></p>`;
@@ -805,46 +853,6 @@
       return structuredHTML;
     }
 
-    // Helper function to translate crop names
-    function translateCropName(cropName) {
-      const cropTranslations = {
-        // English to other languages
-        'tomato': { en: 'tomato', hi: 'टमाटर', te: 'టమాటో' },
-        'wheat': { en: 'wheat', hi: 'गेहूं', te: 'గోధుమ' },
-        'rice': { en: 'rice', hi: 'चावल', te: 'వరి' },
-        'corn': { en: 'corn', hi: 'मक्का', te: 'మొక్కజొన్న' },
-        'maize': { en: 'maize', hi: 'मक्का', te: 'మొక్కజొన్న' },
-        'potato': { en: 'potato', hi: 'आलू', te: 'బంగాళదుంప' },
-        'cotton': { en: 'cotton', hi: 'कपास', te: 'పత్తి' },
-        'soybean': { en: 'soybean', hi: 'सोयाबीन', te: 'సోయాబీన్' },
-        
-        // Hindi to other languages
-        'टमाटर': { en: 'tomato', hi: 'टमाटर', te: 'టమాటో' },
-        'गेहूं': { en: 'wheat', hi: 'गेहूं', te: 'గోధుమ' },
-        'चावल': { en: 'rice', hi: 'चावल', te: 'వరి' },
-        'मक्का': { en: 'corn', hi: 'मक्का', te: 'మొక్కజొన్న' },
-        'आलू': { en: 'potato', hi: 'आलू', te: 'బంగాళదుంప' },
-        'कपास': { en: 'cotton', hi: 'कपास', te: 'పత్తి' },
-        'सोयाबीन': { en: 'soybean', hi: 'सोयाबीन', te: 'సోయాబీన్' },
-        
-        // Telugu to other languages
-        'టమాటో': { en: 'tomato', hi: 'टमाटर', te: 'టమాటో' },
-        'గోధుమ': { en: 'wheat', hi: 'गेहूं', te: 'గోధుమ' },
-        'వరి': { en: 'rice', hi: 'चावल', te: 'వరి' },
-        'మొక్కజొన్న': { en: 'corn', hi: 'मक्का', te: 'మొక్కజొన్న' },
-        'బంగాళదుంప': { en: 'potato', hi: 'आलू', te: 'బంగాళదుంప' },
-        'పత్తి': { en: 'cotton', hi: 'कपास', te: 'పత్తి' },
-        'సోయాబీన్': { en: 'soybean', hi: 'सोयाबीन', te: 'సోయాబీన్' }
-      };
-      
-      const lowerCrop = cropName.toLowerCase();
-      if (cropTranslations[lowerCrop] && cropTranslations[lowerCrop][userLanguage]) {
-        return cropTranslations[lowerCrop][userLanguage];
-      }
-      
-      return cropName; // Return original if no translation found
-    }
-
     // Text diagnosis form handler
     document.getElementById('diagnosisForm').addEventListener('submit', async e => {
       e.preventDefault();
@@ -856,7 +864,6 @@
         return; 
       }
       
-      // Disable form during request
       submitButton.disabled = true;
       submitButton.classList.add('processing');
       userInput.disabled = true;
@@ -879,7 +886,6 @@
           handleAPIResponse(data, text, false);
           userInput.value = '';
           
-          // Show follow-up message
           setTimeout(() => {
             showTypingIndicator();
             setTimeout(() => {
@@ -895,7 +901,6 @@
         console.error('Diagnosis error:', err);
         addMessage(t.errorProcessing, false, true);
       } finally {
-        // Re-enable form
         submitButton.disabled = false;
         submitButton.classList.remove('processing');
         userInput.disabled = false;
@@ -925,7 +930,6 @@
 
       const t = translations[userLanguage];
       
-      // Disable during processing
       predictBtn.disabled = true;
       predictBtn.classList.add('processing');
       predictText.textContent = t.processing;
@@ -944,10 +948,8 @@
         const data = await res.json();
         
         if (res.ok) {
-          // For image responses, pass empty user input to avoid crop duplication
           handleAPIResponse(data, '', true);
           
-          // Show follow-up message
           setTimeout(() => {
             showTypingIndicator();
             setTimeout(() => {
@@ -963,7 +965,6 @@
         console.error('Prediction error:', err);
         addMessage(t.errorImage, false, true);
       } finally {
-        // Reset image upload
         imageInput.value = '';
         imagePreview.style.display = 'none';
         predictBtn.disabled = false;
@@ -975,11 +976,6 @@
 
     // Initialize the chat
     showInitialBotMessage();
-
-    // Simple session check (basic implementation)
-    if (!document.cookie.includes('session') && window.location.pathname !== '/login') {
-      console.log('No session detected - user should be redirected to login');
-    }
   </script>
 </body>
 </html>
