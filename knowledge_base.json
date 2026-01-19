@@ -1,25 +1,5 @@
 [
   {
-    "crop": "Tomato",
-    "symptom": "wilted plants despite adequate water, yellowing leaves, brown vascular tissue",
-    "possible_issue": "Fusarium wilt",
-    "severity": "High",
-    "season": "Warm soil temperatures (28-32°C)",
-    "prevention": "Use resistant varieties (VFN), avoid continuous tomato cropping, solarize soil",
-    "treatment": "Remove infected plants, treat soil with carbendazim (1g/liter)",
-    "organic_treatment": "Apply Trichoderma viride, practice 4-year crop rotation"
-  },
-  {
-    "crop": "Tomato",
-    "symptom": "concentric dark spots with yellow halos on lower leaves",
-    "possible_issue": "Early blight",
-    "severity": "Medium",
-    "season": "Wet and humid conditions",
-    "prevention": "Avoid overhead irrigation, ensure proper spacing (60-90cm), stake plants",
-    "treatment": "Spray copper-based fungicide (2g/liter) or Mancozeb (2g/liter) every 7-10 days",
-    "organic_treatment": "Spray baking soda solution (1 tbsp/gallon), improve air circulation"
-  },
-  {
     "crop": "Rice",
     "symptom": "small oval brown spots with gray centers on leaves",
     "possible_issue": "Brown spot disease",
@@ -203,6 +183,26 @@
     "crop": "Papaya",
     "symptom": "black spots",
     "possible_issue": "Anthracnose",
+    "severity": "",
+    "season": "",
+    "prevention": "",
+    "treatment": "",
+    "organic_treatment": ""
+  },
+  {
+    "crop": "hjs",
+    "symptom": "sdsd",
+    "possible_issue": "sdw",
+    "severity": "",
+    "season": "",
+    "prevention": "",
+    "treatment": "",
+    "organic_treatment": ""
+  },
+  {
+    "crop": "asaqq",
+    "symptom": "wd",
+    "possible_issue": "wew",
     "severity": "",
     "season": "",
     "prevention": "",
